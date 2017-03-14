@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<hibernate-mapping>
+    <class name="projectfms.bean.ReportBean.java" table="Report_tb">
+        <id name="trainerId" type="string" column="Trainer_id">
+            <generator class="assigned">
+        </id>
+        <property name="date" type="date" column="Date"/>
+        <property name="institution" type="string" column="Institution"/>
+        <property name="batchId" type="string" column="Batch_Id"/>
+        <property name="totalStrength" type="int" column="Total_Strength"/>
+        <property name="attendedCandidates" type="int" column="Attended_Candidates"/>
+        <property name="percentile" type="float" column="Percentile"/>
+    </generator>
+    </class>
+</hibernate-mapping>
+
+
+

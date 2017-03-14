@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<hibernate-mapping>
+    <class name="projectfms.bean.TrainerBean.java" table="Trainer_tb">
+        <id name="trainerId" type="string" column="Trainer_id">
+            <generator class="assigned">
+        </id>
+        <property name="trainerName" type="string" column="Trainer_Name"/>
+        <property name="areaOfSpecialization" type="string" column="Area_Of_Specialization"/>
+        <property name="institution" type="string" column="Institution"/>
+        <property name="selfSkilling" type="string" column="Self_Skilling"/>
+        <property name="qualifications" type="string" column="Qualifications"/>
+        <property name="mailId" type="string" column="Mail_Id"/>
+        <property name="phoneNO" type="int" column="Phone_No"/>
+        <property name="dateOfBirth" type="string" column="Date_Of_Birth"/>
+    </generator>
+    </class>
+</hibernate-mapping>
+
+
+
