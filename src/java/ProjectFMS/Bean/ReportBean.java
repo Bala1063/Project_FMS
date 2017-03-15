@@ -12,6 +12,7 @@ import java.sql.Date;
  * @author Sushmitha
  */
 public class ReportBean {
+    private int id;
     private String trainerId;
     private Date date;
     private String institution;
@@ -19,6 +20,14 @@ public class ReportBean {
     private int totalStrength;
     private int attendedCandidates;
     private float percentile;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTrainerId() {
         return trainerId;

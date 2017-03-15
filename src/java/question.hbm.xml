@@ -7,8 +7,8 @@ and open the template in the editor.
 -->
 <hibernate-mapping>
     <class name="ProjectFMS.Bean.QuestionBean" table="Question_tb">
-        <id name="id" type="int" column="id">
-            <generator class="increment"/>
+        <id name="questionId" type="int" column="Question_id">
+            <generator class="assigned"/>
         </id>
         <property name="question" type="string" column="Question"/>
         <list name="answerBean" cascade="all" lazy="false">

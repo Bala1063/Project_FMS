@@ -12,7 +12,7 @@ import java.util.List;
  * @author AswiniAnjappan
  */
 public class QuestionBean {
-    private String trainingId;
+    
     private String contentId;
     private String questionId;
     private String question;
@@ -25,13 +25,7 @@ public class QuestionBean {
     public void setAnswerBean(List<AnswerBean> answerBean) {
         this.answerBean = answerBean;
     }
-    public String getTrainingId() {
-        return trainingId;
-    }
-
-    public void setTrainingId(String trainingId) {
-        this.trainingId = trainingId;
-    }
+  
 
     public String getContentId() {
         return contentId;

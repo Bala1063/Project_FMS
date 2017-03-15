@@ -12,10 +12,19 @@ import java.sql.Date;
  * @author bala
  */
 public class TrainingScheduleBean {
+    private int id;
     private String trainerId;
     private String trainingId;
     private Date fromDate;
     private Date toDate;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
 
     public String getTrainerId() {
