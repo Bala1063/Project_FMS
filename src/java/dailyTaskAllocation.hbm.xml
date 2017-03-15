@@ -10,7 +10,7 @@ and open the template in the editor.
         <id name="taskId" type="string" column="Task_id">
             <generator class="assigned"/>
         </id>
-        <property name="trainingId" type="string" column="Training_Id"/>
+        <property name="trainingId" type="string" column="Training_id"/>
         <property name="task" type="string" column="Task"/>
         <property name="noOfDays" type="int" column="No_Of_Days"/>
  

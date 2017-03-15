@@ -10,8 +10,8 @@ and open the template in the editor.
         <id name="questionId" type="string" column="Question_id">
             <generator class="assigned"/>
         </id>
-        <property name="contentId" type="string" column="Content_Id"/>
-        <property name="trainingId" type="string" column="Training_Id"/>
+        <property name="contentId" type="string" column="Content_id"/>
+        <property name="trainingId" type="string" column="Training_id"/>
         <property name="question" type="string" column="Question"/>
     
     </class>

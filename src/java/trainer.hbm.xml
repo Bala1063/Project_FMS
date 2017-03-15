@@ -10,14 +10,14 @@ and open the template in the editor.
         <id name="trainerId" type="string" column="Trainer_id">
             <generator class="assigned"/>
         </id>
-        <property name="trainerName" type="string" column="Trainer_Name"/>
-        <property name="areaOfSpecialization" type="string" column="Area_Of_Specialization"/>
+        <property name="trainerName" type="string" column="Trainer_name"/>
+        <property name="areaOfSpecialization" type="string" column="Area_of_specialization"/>
         <property name="institution" type="string" column="Institution"/>
-        <property name="selfSkilling" type="string" column="Self_Skilling"/>
+        <property name="selfSkilling" type="string" column="Self_skilling"/>
         <property name="qualifications" type="string" column="Qualifications"/>
-        <property name="mailId" type="string" column="Mail_Id"/>
-        <property name="phoneNO" type="int" column="Phone_No"/>
-        <property name="dateOfBirth" type="string" column="Date_Of_Birth"/>
+        <property name="mailId" type="string" column="Mail_id"/>
+        <property name="phoneNO" type="int" column="Phone_no"/>
+        <property name="dateOfBirth" type="string" column="Date_of_birth"/>
          <list name="dailyTaskUpdationBean" cascade="all" type="false">
             <key column="Trainer_Id"/>
             <one-to-many class="ProjectFMS.Bean.DailyTaskUpdationBean"/>
