@@ -8,12 +8,12 @@ and open the template in the editor.
 <hibernate-mapping>
     <class name="projectfms.bean.TrainingScheduleBean.java" table="trainingSchedule_tb">
         <id name="trainerId" type="string" column="Trainer_id">
-            <generator class="assigned">
+            <generator class="assigned"/>
         </id>
         <property name="trainingId" type="string" column="Training_Id"/>
         <property name="fromDate" type="date" column="From_Date"/>
         <property name="toDate" type="date" column="To_Date"/>
-    </generator>
+   
     </class>
 </hibernate-mapping>
 
