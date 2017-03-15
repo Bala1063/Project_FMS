@@ -41,13 +41,10 @@ Contributor(s):
 -->
 <hibernate-configuration>
   <session-factory>
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/fms_project?zeroDateTimeBehavior=convertToNull</property>
-    <property name="hibernate.connection.username">fmsproject</property>
-    <property name="hibernate.connection.password">fmsproject</property>
-    <property name="hibernate.hbm2ddl.auto">update</property>
-    <property name="hibernate.show_sql">true</property>
-    <mapping resource="login.hbm.xml"/>
+    <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
+    <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+    <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
+    <property name="hibernate.connection.username">projectfms</property>
+    <property name="hibernate.connection.password">projectfms</property>
   </session-factory>
 </hibernate-configuration>
