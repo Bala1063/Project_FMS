@@ -7,7 +7,7 @@ and open the template in the editor.
 -->
 
 <hibernate-mapping>
-    <class name="projectfms.bean.LoginBean.java" table="Login_tb">
+    <class name="projectfms.bean.LoginBean" table="Login_tb">
         <id name="userId" type="string" column="User_id">
             <generator class="assigned"/>
         </id>
@@ -16,7 +16,5 @@ and open the template in the editor.
         <property name="inTime" type="time" column="In_time"/>
         <property name="outTime" type="time" column="Out_time"/>
         <property name="status" type="string" column="Status"/>
-   
-
-    </class>
+   </class>
 </hibernate-mapping>

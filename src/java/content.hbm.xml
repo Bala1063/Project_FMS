@@ -6,13 +6,13 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <hibernate-mapping>
-    <class name="projectfms.bean.ContentBean.java" table="Content_tb">
+    <class name="projectfms.bean.ContentBean" table="Content_tb">
         <id name="contentId" type="string" column="Content_id">
             <generator class="assigned"/>
         </id>
         <property name="content" type="string" column="Content"/>
         <list name="questionBean" cascade="all" lazy="false">
-            <key column="Training_id" />
+            <key column="Content_id" />
             <index column="type"/>
             <one-to-many class="ProjectFMS.Bean.QuestionBean"/>
         </list>

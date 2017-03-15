@@ -6,9 +6,9 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <hibernate-mapping>
-    <class name="projectfms.bean.AnswerBean.java" table="Answer_tb">
-        <id name="questionId" type="string" column="Question_id">
-            <generator class="assigned"/>
+    <class name="projectfms.bean.AnswerBean" table="Answer_tb">
+        <id name="id" type="int" column="id">
+            <generator class="increment"/>
         </id>
         <property name="type" type="string" column="Type"/>
         <property name="answer" type="string" column="Answer"/>

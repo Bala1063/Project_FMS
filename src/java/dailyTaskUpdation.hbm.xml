@@ -6,7 +6,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <hibernate-mapping>
-    <class name="projectfms.bean.DailyTaskUpdationBean.java" table="DailyTaskUpdation_tb">
+    <class name="projectfms.bean.DailyTaskUpdationBean" table="DailyTaskUpdation_tb">
         <id name="taskId" type="string" column="Task_id">
             <generator class="assigned"/>
         </id>

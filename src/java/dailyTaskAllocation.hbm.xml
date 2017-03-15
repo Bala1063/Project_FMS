@@ -6,11 +6,10 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <hibernate-mapping>
-    <class name="projectfms.bean.DailyTaskAllocationBean.java" table="DailyTaskAllocation_tb">
+    <class name="projectfms.bean.DailyTaskAllocationBean" table="DailyTaskAllocation_tb">
         <id name="taskId" type="string" column="Task_id">
             <generator class="assigned"/>
         </id>
-        <property name="trainingId" type="string" column="Training_id"/>
         <property name="task" type="string" column="Task"/>
         <property name="noOfDays" type="int" column="No_of_days"/>
  
