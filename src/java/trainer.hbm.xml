@@ -24,10 +24,12 @@ and open the template in the editor.
         </one-to-one>
         <list name="trainingScheduleBean" table="ProjectFMS.Bean.TrainingScheduleBean" cascade="all" lazy="false">
             <key column="Trainer_id"/>
+            <index column="type"/>
             <one-to-many  class="ProjectFMS.Bean.TrainingScheduleBean" />
         </list>
         <list name="dailyTaskUpdattion" table="ProjectFMS.Bean.DailyTaskUpdationBean" cascade="all" lazy="false">
             <key column="Trainer_id"/>
+            <index column="type"/>
             <one-to-many class="ProjectFMS.Bean.DailyTaskUpdationBean" />
         </list>
          

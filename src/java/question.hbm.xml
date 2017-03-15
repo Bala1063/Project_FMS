@@ -6,13 +6,14 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <hibernate-mapping>
-    <class name="projectfms.bean.QuestionBean" table="Question_tb">
+    <class name="ProjectFMS.Bean.QuestionBean" table="Question_tb">
         <id name="id" type="int" column="id">
             <generator class="increment"/>
         </id>
         <property name="question" type="string" column="Question"/>
         <list name="answerBean" cascade="all" lazy="false">
              <key column="Question_id" />
+             <index column="type"/>
               <one-to-many class="ProjectFMS.Bean.AnswerBean"/>
         </list>
     </class>
