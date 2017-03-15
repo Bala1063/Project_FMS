@@ -7,13 +7,16 @@ and open the template in the editor.
 -->
 <hibernate-mapping>
     <class name="projectfms.bean.QuestionBean.java" table="Question_tb">
-        <id name="questionId" type="string" column="Question_id">
-            <generator class="assigned"/>
+        <id name="id" type="int" column="id">
+            <generator class="increment"/>
         </id>
-        <property name="contentId" type="string" column="Content_Id"/>
-        <property name="trainingId" type="string" column="Training_Id"/>
+        <property name="contentId" type="string" column="Content_id"/>
+        <property name="trainingId" type="string" column="Training_id"/>
         <property name="question" type="string" column="Question"/>
-    
+        <list name="answerBean" cascade="all" lazy="false">
+             <key column="Question_id" />
+              <one-to-many class="ProjectFMS.Bean.AnswerBean"/>
+        </list>
     </class>
 </hibernate-mapping>
 
