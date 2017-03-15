@@ -16,6 +16,7 @@ public class TrainingScheduleBean {
     private String trainingId;
     private Date fromDate;
     private Date toDate;
+    
 
     public String getTrainerId() {
         return trainerId;

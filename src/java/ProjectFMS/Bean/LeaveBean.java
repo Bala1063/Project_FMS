@@ -14,7 +14,16 @@ import java.sql.Date;
 public class LeaveBean {
     private String trainerId;
     private Date leaveDate;
+    private TrainerBean trainerBean;
 
+    public TrainerBean getTrainerBean() {
+        return trainerBean;
+    }
+
+    public void setTrainerBean(TrainerBean trainerBean) {
+        this.trainerBean = trainerBean;
+    }
+    
     public String getTrainerId() {
         return trainerId;
     }

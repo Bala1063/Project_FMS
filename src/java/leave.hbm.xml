@@ -7,8 +7,10 @@ and open the template in the editor.
 -->
 <hibernate-mapping>
     <class name="projectfms.bean.LeaveBean.java" table="Leave_tb">
-        <id name="tainerId" type="string" column="Trainer_id">
-            <generator class="assigned"/>
+         <id name="trainerId" column="Trainer_id">
+            <generator class="foreign">
+                <param name="property">trainerBean</param>
+            </generator>
         </id>
         <property name="leaveDate" type="date" column="Leave_Date"/>
     

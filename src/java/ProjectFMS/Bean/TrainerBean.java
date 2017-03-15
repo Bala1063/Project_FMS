@@ -6,6 +6,7 @@
 package ProjectFMS.Bean;
 
 import java.sql.Date;
+import java.util.List;
 
 /**
  *
@@ -21,6 +22,46 @@ public class TrainerBean {
     private String mailId;
     private int phoneNo;
     private Date dateOfBirth;
+    private MinimumWorkingPeriodBean minimumWorkingPeriodBean;
+    private LeaveBean leaveBean;
+    private List<TrainingScheduleBean> trainingScheduleBean;
+    private List<DailyTaskUpdationBean> dailyTaskUpdationBean;
+
+    public MinimumWorkingPeriodBean getMinimumWorkingPeriodBean() {
+        return minimumWorkingPeriodBean;
+    }
+
+    public void setMinimumWorkingPeriodBean(MinimumWorkingPeriodBean minimumWorkingPeriodBean) {
+        this.minimumWorkingPeriodBean = minimumWorkingPeriodBean;
+    }
+
+    public LeaveBean getLeaveBean() {
+        return leaveBean;
+    }
+
+    public void setLeaveBean(LeaveBean leaveBean) {
+        this.leaveBean = leaveBean;
+    }
+
+    public List<TrainingScheduleBean> getTrainingScheduleBean() {
+        return trainingScheduleBean;
+    }
+
+    public void setTrainingScheduleBean(List<TrainingScheduleBean> trainingScheduleBean) {
+        this.trainingScheduleBean = trainingScheduleBean;
+    }
+
+   
+    public List<DailyTaskUpdationBean> getDailyTaskUpdationBean() {
+        return dailyTaskUpdationBean;
+    }
+
+    public void setDailyTaskUpdationBean(List<DailyTaskUpdationBean> dailyTaskUpdationBean) {
+        this.dailyTaskUpdationBean = dailyTaskUpdationBean;
+    }
+
+   
+    
 
     public String getTrainerId() {
         return trainerId;

@@ -18,6 +18,19 @@ and open the template in the editor.
         <property name="mailId" type="string" column="Mail_Id"/>
         <property name="phoneNO" type="int" column="Phone_No"/>
         <property name="dateOfBirth" type="string" column="Date_Of_Birth"/>
+        <one-to-one name="minimumWorkingPeroidBean" class="ProjectFMS.Bean.MinimumWorkingPeriodBean" cascade="all" lazy="false">
+                    </one-to-one>
+          <one-to-one name="leaveBean" class="ProjectFms.Bean.LeaveBean" cascade="all" lazy="false">
+                    </one-to-one>
+                   <list name="trainingScheduleBean" table="ProjectFMS.Bean.TrainingScheduleBean" cascade="all" lazy="false">
+                          <key column="Trainer_id"/>
+                      <one-to-many  class="ProjectFMS.Bean.TrainingScheduleBean" />
+                   </list>
+                    <list name="dailyTaskUpdattion" table="ProjectFMS.Bean.DailyTaskUpdationBean" cascade="all" lazy="false">
+                        <key column="Trainer_id"/>
+                        <one-to-many class="ProjectFMS.Bean.DailyTaskUpdationBean" />
+                    </list>
+                                
   
     </class>
 </hibernate-mapping>
