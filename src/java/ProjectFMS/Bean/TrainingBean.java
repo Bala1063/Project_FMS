@@ -5,12 +5,23 @@
  */
 package ProjectFMS.Bean;
 
+import java.util.List;
+
 /**
  *
  * @author Sushmitha
  */
 public class TrainingBean {
     private String trainingId;
+    private List<ContentBean> contentBean;
+
+    public List<ContentBean> getContentBean() {
+        return contentBean;
+    }
+
+    public void setContentBean(List<ContentBean> contentBean) {
+        this.contentBean = contentBean;
+    }
 
     public String getTrainingId() {
         return trainingId;

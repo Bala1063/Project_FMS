@@ -12,7 +12,7 @@ and open the template in the editor.
         </id>
         <property name="content" type="string" column="Content"/>
         <list name="questionBean" cascade="all" lazy="false">
-            <key column="training_Id" />
+            <key column="Training_id" />
             <index column="type"/>
             <one-to-many class="ProjectFMS.Bean.QuestionBean"/>
         </list>

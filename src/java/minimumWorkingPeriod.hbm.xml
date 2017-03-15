@@ -10,7 +10,7 @@ and open the template in the editor.
         <id name="trainerId" type="string" column="Trainer_id">
             <generator class="assigned"/>
         </id>
-        <property name="minimumWorkingPeriod" type="string" column="minimum_Working_Period"/>
+        <property name="minimumWorkingPeriod" type="string" column="Minimum_working_period"/>
     
     </class>
 </hibernate-mapping>

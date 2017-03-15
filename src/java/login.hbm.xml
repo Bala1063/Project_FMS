@@ -13,8 +13,8 @@ and open the template in the editor.
         </id>
         <property name="password" type="string" column="Password"/>
         <property name="type" type="string" column="Type"/>
-        <property name="inTime" type="time" column="In_Time"/>
-        <property name="outTime" type="time" column="Out_Time"/>
+        <property name="inTime" type="time" column="In_time"/>
+        <property name="outTime" type="time" column="Out_time"/>
         <property name="status" type="string" column="Status"/>
    
 
