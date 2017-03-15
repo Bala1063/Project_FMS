@@ -12,9 +12,9 @@ and open the template in the editor.
         </id>
         <property name="date" type="date" column="Date"/>
         <property name="institution" type="string" column="Institution"/>
-        <property name="batchId" type="string" column="Batch_Id"/>
-        <property name="totalStrength" type="int" column="Total_Strength"/>
-        <property name="attendedCandidates" type="int" column="Attended_Candidates"/>
+        <property name="batchId" type="string" column="Batch_id"/>
+        <property name="totalStrength" type="int" column="Total_strength"/>
+        <property name="attendedCandidates" type="int" column="Attended_candidates"/>
         <property name="percentile" type="float" column="Percentile"/>
    
     </class>

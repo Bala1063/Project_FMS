@@ -12,7 +12,7 @@ and open the template in the editor.
                 <param name="property">trainerBean</param>
             </generator>
         </id>
-        <property name="minimumWorkingPeriod" type="string" column="minimum_Working_Period"/>
+        <property name="minimumWorkingPeriod" type="string" column="Minimum_working_period"/>
     
     </class>
 </hibernate-mapping>

@@ -5,6 +5,8 @@
  */
 package ProjectFMS.Bean;
 
+import java.util.List;
+
 /**
  *
  * @author AswiniAnjappan
@@ -14,7 +16,15 @@ public class QuestionBean {
     private String contentId;
     private String questionId;
     private String question;
+    private List<AnswerBean> answerBean;
 
+    public List<AnswerBean> getAnswerBean() {
+        return answerBean;
+    }
+
+    public void setAnswerBean(List<AnswerBean> answerBean) {
+        this.answerBean = answerBean;
+    }
     public String getTrainingId() {
         return trainingId;
     }

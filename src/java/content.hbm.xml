@@ -10,8 +10,12 @@ and open the template in the editor.
         <id name="contentId" type="string" column="Content_id">
             <generator class="assigned"/>
         </id>
-        <property name="trainingId" type="string" column="Training_Id"/>
         <property name="content" type="string" column="Content"/>
+        <list name="questionBean" cascade="all" lazy="false">
+            <key column="Training_id" />
+            <index column="type"/>
+            <one-to-many class="ProjectFMS.Bean.QuestionBean"/>
+        </list>
         </class>
 </hibernate-mapping>
 
