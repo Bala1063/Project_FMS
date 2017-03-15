@@ -7,12 +7,12 @@ and open the template in the editor.
 -->
 <hibernate-mapping>
     <class name="projectfms.bean.TrainingBean.java" table="Training_tb">
-        <id name="trainingId" type="string" column="training_id">
+        <id name="trainingId" type="string" column="Training_id">
             <generator class="assigned"/>
         </id>
         <property name="trainingName" type="string" column="Training_Name"/>
         <list name="contentBean" cascade="all" type="false">
-            <key column="training_id"/>
+            <key column="Training_id"/>
             <one-to-many class="ProjectFMS.Bean.ContentBean"/>
         </list>
     </class>
