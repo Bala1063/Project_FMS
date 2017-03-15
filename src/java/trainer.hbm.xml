@@ -18,7 +18,10 @@ and open the template in the editor.
         <property name="mailId" type="string" column="Mail_Id"/>
         <property name="phoneNO" type="int" column="Phone_No"/>
         <property name="dateOfBirth" type="string" column="Date_Of_Birth"/>
-  
+         <list name="dailyTaskUpdationBean" cascade="all" type="false">
+            <key column="Training_Id"/>
+            <one-to-many class="ProjectFMS.Bean.DailyTaskUpdationBean"/>
+        </list>
     </class>
 </hibernate-mapping>
 
