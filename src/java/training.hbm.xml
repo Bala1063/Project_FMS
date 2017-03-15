@@ -11,7 +11,10 @@ and open the template in the editor.
             <generator class="assigned"/>
         </id>
         <property name="trainingName" type="string" column="Training_Name"/>
-  
+        <list name="contentBean" cascade="all" type="false">
+            <key column="trainingId"/>
+            <one-to-many class="ProjectFMS.Bean.ContentBean"/>
+        </list>
     </class>
 </hibernate-mapping>
 
