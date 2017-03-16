@@ -11,7 +11,7 @@ and open the template in the editor.
             <generator class="assigned"/>
         </id>
         <property name="question" type="string" column="Question"/>
-        <list name="answerBean" cascade="all" lazy="false">
+        <list name="answerBeans" cascade="all" lazy="false">
              <key column="Question_id" />
              <index column="type"/>
               <one-to-many class="ProjectFMS.Bean.AnswerBean"/>

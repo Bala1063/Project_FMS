@@ -16,15 +16,17 @@ public class QuestionBean {
     private String contentId;
     private String questionId;
     private String question;
-    private List<AnswerBean> answerBean;
+    private List<AnswerBean> answerBeans;
 
-    public List<AnswerBean> getAnswerBean() {
-        return answerBean;
+    public List<AnswerBean> getAnswerBeans() {
+        return answerBeans;
     }
 
-    public void setAnswerBean(List<AnswerBean> answerBean) {
-        this.answerBean = answerBean;
+    public void setAnswerBeans(List<AnswerBean> answerBeans) {
+        this.answerBeans = answerBeans;
     }
+
+   
   
 
     public String getContentId() {

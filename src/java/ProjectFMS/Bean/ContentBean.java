@@ -15,15 +15,17 @@ public class ContentBean {
     private String trainingId;
     private String contentId;
     private String content;
-    private List<QuestionBean> questionBean;
+    private List<QuestionBean> questionBeans;
 
-    public List<QuestionBean> getQuestionBean() {
-        return questionBean;
+    public List<QuestionBean> getQuestionBeans() {
+        return questionBeans;
     }
 
-    public void setQuestionBean(List<QuestionBean> questionBean) {
-        this.questionBean = questionBean;
+    public void setQuestionBeans(List<QuestionBean> questionBeans) {
+        this.questionBeans = questionBeans;
     }
+
+  
 
     public String getTrainingId() {
         return trainingId;

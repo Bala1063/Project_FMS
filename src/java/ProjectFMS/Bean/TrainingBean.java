@@ -14,17 +14,18 @@ import java.util.List;
 public class TrainingBean {
 
     private String trainingId;
-    private List<ContentBean> contentBean;
+    private List<ContentBean> contentBeans;
     private String trainingName;
 
-    public List<ContentBean> getContentBean() {
-        return contentBean;
+    public List<ContentBean> getContentBeans() {
+        return contentBeans;
     }
 
-    public void setContentBean(List<ContentBean> contentBean) {
-        this.contentBean = contentBean;
+    public void setContentBeans(List<ContentBean> contentBeans) {
+        this.contentBeans = contentBeans;
     }
 
+    
     public String getTrainingId() {
         return trainingId;
     }
