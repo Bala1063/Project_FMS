@@ -12,8 +12,10 @@ import java.util.List;
  * @author Sushmitha
  */
 public class TrainingBean {
+
     private String trainingId;
     private List<ContentBean> contentBean;
+    private String trainingName;
 
     public List<ContentBean> getContentBean() {
         return contentBean;
@@ -38,6 +40,5 @@ public class TrainingBean {
     public void setTrainingName(String trainingName) {
         this.trainingName = trainingName;
     }
-    private String trainingName;
-    
+
 }

@@ -6,7 +6,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <hibernate-mapping>
-    <class name="projectfms.bean.TrainerBean" table="Trainer_tb">
+    <class name="ProjectFMS.Bean.TrainerBean" table="Trainer_tb">
         <id name="trainerId" type="string" column="Trainer_id">
             <generator class="assigned"/>
         </id>
@@ -16,23 +16,25 @@ and open the template in the editor.
         <property name="selfSkilling" type="string" column="Self_skilling"/>
         <property name="qualifications" type="string" column="Qualifications"/>
         <property name="mailId" type="string" column="Mail_id"/>
-        <property name="phoneNO" type="int" column="Phone_no"/>
+        <property name="phoneNo" type="int" column="Phone_no"/>
         <property name="dateOfBirth" type="string" column="Date_of_birth"/>
-        <one-to-one name="minimumWorkingPeroidBean" class="ProjectFMS.Bean.MinimumWorkingPeriodBean" cascade="all" lazy="false">
+        <one-to-one name="minimumWorkingPeriodBean" class="ProjectFMS.Bean.MinimumWorkingPeriodBean" cascade="all" lazy="false">
         </one-to-one>
-        <one-to-one name="leaveBean" class="ProjectFms.Bean.LeaveBean" cascade="all" lazy="false">
-        </one-to-one>
-        <list name="trainingScheduleBean" table="ProjectFMS.Bean.TrainingScheduleBean" cascade="all" lazy="false">
+        <list name="leaveBeans" class="ProjectFms.Bean.LeaveBean" cascade="all" lazy="false">
+            <key column="Trainer_id"/>
+            <index column="type"/>
+            <one-to-many  class="ProjectFMS.Bean.LeaveBean" />
+        </list>
+        <list name="trainingScheduleBeans" table="ProjectFMS.Bean.TrainingScheduleBean" cascade="all" lazy="false">
             <key column="Trainer_id"/>
             <index column="type"/>
             <one-to-many  class="ProjectFMS.Bean.TrainingScheduleBean" />
         </list>
-        <list name="dailyTaskUpdattion" table="ProjectFMS.Bean.DailyTaskUpdationBean" cascade="all" lazy="false">
+        <list name="dailyTaskUpdationBeans" table="ProjectFMS.Bean.DailyTaskUpdationBean" cascade="all" lazy="false">
             <key column="Trainer_id"/>
             <index column="type"/>
             <one-to-many class="ProjectFMS.Bean.DailyTaskUpdationBean" />
         </list>
-         
     </class>
 </hibernate-mapping>
 

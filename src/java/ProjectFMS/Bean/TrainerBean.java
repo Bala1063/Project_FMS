@@ -23,9 +23,9 @@ public class TrainerBean {
     private int phoneNo;
     private Date dateOfBirth;
     private MinimumWorkingPeriodBean minimumWorkingPeriodBean;
-    private LeaveBean leaveBean;
-    private List<TrainingScheduleBean> trainingScheduleBean;
-    private List<DailyTaskUpdationBean> dailyTaskUpdationBean;
+    private List<LeaveBean> leaveBeans;
+    private List<TrainingScheduleBean> trainingScheduleBeans;
+    private List<DailyTaskUpdationBean> dailyTaskUpdationBeans;
 
     public MinimumWorkingPeriodBean getMinimumWorkingPeriodBean() {
         return minimumWorkingPeriodBean;
@@ -35,32 +35,32 @@ public class TrainerBean {
         this.minimumWorkingPeriodBean = minimumWorkingPeriodBean;
     }
 
-    public LeaveBean getLeaveBean() {
-        return leaveBean;
+    public List<LeaveBean> getLeaveBeans() {
+        return leaveBeans;
     }
 
-    public void setLeaveBean(LeaveBean leaveBean) {
-        this.leaveBean = leaveBean;
+    public void setLeaveBeans(List<LeaveBean> leaveBeans) {
+        this.leaveBeans = leaveBeans;
     }
 
-    public List<TrainingScheduleBean> getTrainingScheduleBean() {
-        return trainingScheduleBean;
+    
+    public List<TrainingScheduleBean> getTrainingScheduleBeans() {
+        return trainingScheduleBeans;
     }
 
-    public void setTrainingScheduleBean(List<TrainingScheduleBean> trainingScheduleBean) {
-        this.trainingScheduleBean = trainingScheduleBean;
+    public void setTrainingScheduleBeans(List<TrainingScheduleBean> trainingScheduleBeans) {
+        this.trainingScheduleBeans = trainingScheduleBeans;
     }
 
-   
-    public List<DailyTaskUpdationBean> getDailyTaskUpdationBean() {
-        return dailyTaskUpdationBean;
+    public List<DailyTaskUpdationBean> getDailyTaskUpdationBeans() {
+        return dailyTaskUpdationBeans;
     }
 
-    public void setDailyTaskUpdationBean(List<DailyTaskUpdationBean> dailyTaskUpdationBean) {
-        this.dailyTaskUpdationBean = dailyTaskUpdationBean;
+    public void setDailyTaskUpdationBeans(List<DailyTaskUpdationBean> dailyTaskUpdationBeans) {
+        this.dailyTaskUpdationBeans = dailyTaskUpdationBeans;
     }
 
-   
+       
     
 
     public String getTrainerId() {

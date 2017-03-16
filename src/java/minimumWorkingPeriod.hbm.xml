@@ -6,13 +6,14 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <hibernate-mapping>
-    <class name="projectfms.bean.MinimumWorkingPeriodBean" table="MinimumWorkingPeriod_tb">
+    <class name="ProjectFMS.Bean.MinimumWorkingPeriodBean" table="MinimumWorkingPeriod_tb">
        <id name="trainerId" column="Trainer_id">
             <generator class="foreign">
                 <param name="property">trainerBean</param>
             </generator>
         </id>
         <property name="minimumWorkingPeriod" type="string" column="Minimum_working_period"/>
+        <one-to-one name="trainerBean" ></one-to-one>
     
     </class>
 </hibernate-mapping>

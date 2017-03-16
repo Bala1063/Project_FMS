@@ -6,7 +6,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <hibernate-mapping>
-    <class name="projectfms.bean.AnswerBean" table="Answer_tb">
+    <class name="ProjectFMS.Bean.AnswerBean" table="Answer_tb">
         <id name="id" type="int" column="id">
             <generator class="increment"/>
         </id>

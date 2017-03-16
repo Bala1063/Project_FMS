@@ -6,7 +6,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <hibernate-mapping>
-    <class name="projectfms.bean.ContentBean" table="Content_tb">
+    <class name="ProjectFMS.Bean.ContentBean" table="Content_tb">
         <id name="contentId" type="string" column="Content_id">
             <generator class="assigned"/>
         </id>
