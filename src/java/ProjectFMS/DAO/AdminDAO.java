@@ -5,6 +5,8 @@
  */
 package ProjectFMS.DAO;
 
+import ProjectFMS.Bean.DailyTaskAllocationBean;
+import ProjectFMS.Bean.QuestionBean;
 import ProjectFMS.Bean.TrainerBean;
 import ProjectFMS.Bean.TrainingBean;
 import ProjectFMS.Util.Util;
@@ -53,5 +55,43 @@ public class AdminDAO {
             session.close();
         }
        return "success";
+    }
+    
+     public String addOrUpdateQuestion(QuestionBean questionBean){
+         
+        Session session = Util.getSessionFactory().openSession();
+         Transaction t = null;
+        try {
+            t = session.beginTransaction();
+            session.saveOrUpdate(questionBean);
+            t.commit();
+        } catch (HibernateException e) {
+            if (t != null) {
+                t.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return "success";
+    }
+     
+    
+     public String addOrUpdateDailyTaskAllocation(DailyTaskAllocationBean dailyTaskAllocationBean){
+        Session session = Util.getSessionFactory().openSession();
+         Transaction t = null;
+        try {
+            t = session.beginTransaction();
+            session.saveOrUpdate(dailyTaskAllocationBean);
+            t.commit();
+        } catch (HibernateException e) {
+            if (t != null) {
+                t.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return "success";
     }
 }
