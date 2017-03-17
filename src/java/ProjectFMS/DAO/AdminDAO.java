@@ -5,6 +5,7 @@
  */
 package ProjectFMS.DAO;
 
+import ProjectFMS.Bean.TrainerBean;
 import ProjectFMS.Bean.TrainingBean;
 import ProjectFMS.Util.Util;
 import org.hibernate.HibernateException;
@@ -16,13 +17,13 @@ import org.hibernate.Transaction;
  * @author bala
  */
 public class AdminDAO {
-    public String addOrUpdateTrainingDetails(TrainingBean trainingBean) {
+    public String addOrUpdateTrainerDetails(TrainerBean trainerBean) {
         
         Session session = Util.getSessionFactory().openSession();
         Transaction t = null;
         try {
             t = session.beginTransaction();
-           session.saveOrUpdate(trainingBean);
+           session.saveOrUpdate(trainerBean);
             t.commit();
         } catch (HibernateException e) {
             if (t != null) {
