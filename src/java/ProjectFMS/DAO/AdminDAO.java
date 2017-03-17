@@ -13,6 +13,11 @@ import org.hibernate.Transaction;
 
 /**
  *
+ * @author bala
+ */
+public class AdminDAO {
+    public String addOrUpdateTrainingDetails(TrainingBean trainingBean) {
+        
  * @author AswiniAnjappan
  */
 public class AdminDAO {
@@ -33,4 +38,3 @@ public class AdminDAO {
         }
         return "Success";
      }
-}

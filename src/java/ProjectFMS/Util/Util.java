@@ -5,10 +5,18 @@
  */
 package ProjectFMS.Util;
 
+
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 /**
+ * Hibernate Utility class with a convenient method to get Session Factory
+ * object.
+ *
+ * @author bala
+ */
+public class Util {
+
  *
  * @author AswiniAnjappan
  */
