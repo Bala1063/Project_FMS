@@ -15,11 +15,8 @@ import org.hibernate.Transaction;
  *
  * @author bala
  */
-public class AdminDAO {
-    public String addOrUpdateTrainingDetails(TrainingBean trainingBean) {
-        
- * @author AswiniAnjappan
- */
+
+
 public class AdminDAO {
      public String addOrUpdateTrainingDetails(TrainingBean trainingBean) {
         Session session = Util.getSessionFactory().openSession();
@@ -36,5 +33,8 @@ public class AdminDAO {
         } finally {
             session.close();
         }
+     
         return "Success";
      }
+}
+

@@ -17,10 +17,7 @@ import org.hibernate.cfg.Configuration;
  */
 public class Util {
 
- *
- * @author AswiniAnjappan
- */
-public class Util {
+ 
     private static final SessionFactory sessionFactory;
     
     static {
