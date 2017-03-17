@@ -10,10 +10,10 @@ import org.hibernate.cfg.Configuration;
 
 /**
  *
- * @author Aruna
+ * @author Sushmitha
  */
 public class Util {
-     private static final SessionFactory sessionFactory;
+        private static final SessionFactory sessionFactory;
     
     static {
         try {
@@ -30,3 +30,5 @@ public class Util {
         return sessionFactory;
     }
 }
+    
+
