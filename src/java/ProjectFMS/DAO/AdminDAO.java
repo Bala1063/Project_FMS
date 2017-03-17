@@ -36,4 +36,22 @@ public class AdminDAO {
        return "success";
     }
     
+    public String addOrUpdateTrainingDetails(TrainingBean trainingBean) {
+        
+        Session session = Util.getSessionFactory().openSession();
+        Transaction t = null;
+        try {
+            t = session.beginTransaction();
+           session.saveOrUpdate(trainingBean);
+            t.commit();
+        } catch (HibernateException e) {
+            if (t != null) {
+                t.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+       return "success";
+    }
 }
