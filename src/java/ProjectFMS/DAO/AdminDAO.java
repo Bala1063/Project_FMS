@@ -16,7 +16,7 @@ import org.hibernate.Transaction;
  * @author Sushmitha
  */
 public class AdminDAO {
-     public String addorupdateContent(ContentBean contentBean) {
+     public String addOrUpdateContent(ContentBean contentBean) {
         Session session = Util.getSessionFactory().openSession();
         Transaction t = null;
         try {
