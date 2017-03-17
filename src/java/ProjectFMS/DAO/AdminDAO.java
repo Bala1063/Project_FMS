@@ -5,6 +5,7 @@
  */
 package ProjectFMS.DAO;
 
+import ProjectFMS.Bean.MinimumWorkingPeriodBean;
 import ProjectFMS.Bean.TrainerBean;
 import ProjectFMS.Bean.TrainingBean;
 import ProjectFMS.Util.Util;
@@ -54,4 +55,5 @@ public class AdminDAO {
         }
        return "success";
     }
+   
 }
