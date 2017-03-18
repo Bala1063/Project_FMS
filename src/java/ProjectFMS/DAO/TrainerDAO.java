@@ -19,13 +19,13 @@ import org.hibernate.Transaction;
  * @author AswiniAnjappan
  */
 public class TrainerDAO {
-     public String addOrUpdateLeaveDetails(LeaveBean leaveBean) {
+    public String addOrUpdateDetails(Object o) {
         
         Session session = Util.getSessionFactory().openSession();
         Transaction t = null;
         try {
             t = session.beginTransaction();
-           session.saveOrUpdate(leaveBean);
+           session.saveOrUpdate(o);
             t.commit();
         } catch (HibernateException e) {
             if (t != null) {
@@ -37,6 +37,24 @@ public class TrainerDAO {
         }
        return "success";
     }
+//     public String addOrUpdateLeaveDetails(LeaveBean leaveBean) {
+//        
+//        Session session = Util.getSessionFactory().openSession();
+//        Transaction t = null;
+//        try {
+//            t = session.beginTransaction();
+//           session.saveOrUpdate(leaveBean);
+//            t.commit();
+//        } catch (HibernateException e) {
+//            if (t != null) {
+//                t.rollback();
+//            }
+//            e.printStackTrace();
+//        } finally {
+//            session.close();
+//        }
+//       return "success";
+//    }
     public String addOrUpdateTrainerDetails(TrainerBean trainerBean) {
         
         Session session = Util.getSessionFactory().openSession();
@@ -55,40 +73,40 @@ public class TrainerDAO {
         }
        return "success";
     }
-    public String addOrUpdateReport(ReportBean reportBean) {
-        Session session = Util.getSessionFactory().openSession();
-        Transaction t = null;
-        try {
-            t = session.beginTransaction();
-            session.saveOrUpdate(reportBean);
-            t.commit();
-        } catch (HibernateException e) {
-            if (t != null) {
-                t.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-        return "success";
-     }  
-      public String addOrUpdateTask(DailyTaskUpdationBean dailyTaskUpdationBean) {
-        Session session = Util.getSessionFactory().openSession();
-        Transaction t = null;
-        try {
-            t = session.beginTransaction();
-            session.saveOrUpdate(dailyTaskUpdationBean);
-            t.commit();
-        } catch (HibernateException e) {
-            if (t != null) {
-                t.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-        return "success";
-     }  
+//    public String addOrUpdateReport(ReportBean reportBean) {
+//        Session session = Util.getSessionFactory().openSession();
+//        Transaction t = null;
+//        try {
+//            t = session.beginTransaction();
+//            session.saveOrUpdate(reportBean);
+//            t.commit();
+//        } catch (HibernateException e) {
+//            if (t != null) {
+//                t.rollback();
+//            }
+//            e.printStackTrace();
+//        } finally {
+//            session.close();
+//        }
+//        return "success";
+//     }  
+//      public String addOrUpdateTask(DailyTaskUpdationBean dailyTaskUpdationBean) {
+//        Session session = Util.getSessionFactory().openSession();
+//        Transaction t = null;
+//        try {
+//            t = session.beginTransaction();
+//            session.saveOrUpdate(dailyTaskUpdationBean);
+//            t.commit();
+//        } catch (HibernateException e) {
+//            if (t != null) {
+//                t.rollback();
+//            }
+//            e.printStackTrace();
+//        } finally {
+//            session.close();
+//        }
+//        return "success";
+//     }  
      
     
 }
