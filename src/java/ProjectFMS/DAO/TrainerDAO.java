@@ -5,11 +5,10 @@
  */
 package ProjectFMS.DAO;
 
-import ProjectFMS.Bean.ContentBean;
-import ProjectFMS.Bean.DailyTaskAllocationBean;
-import ProjectFMS.Bean.QuestionBean;
+import ProjectFMS.Bean.DailyTaskUpdationBean;
+import ProjectFMS.Bean.LeaveBean;
+import ProjectFMS.Bean.ReportBean;
 import ProjectFMS.Bean.TrainerBean;
-import ProjectFMS.Bean.TrainingBean;
 import ProjectFMS.Util.Util;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -17,9 +16,27 @@ import org.hibernate.Transaction;
 
 /**
  *
- * @author bala
+ * @author AswiniAnjappan
  */
-public class AdminDAO {
+public class TrainerDAO {
+     public String addOrUpdateLeaveDetails(LeaveBean leaveBean) {
+        
+        Session session = Util.getSessionFactory().openSession();
+        Transaction t = null;
+        try {
+            t = session.beginTransaction();
+           session.saveOrUpdate(leaveBean);
+            t.commit();
+        } catch (HibernateException e) {
+            if (t != null) {
+                t.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+       return "success";
+    }
     public String addOrUpdateTrainerDetails(TrainerBean trainerBean) {
         
         Session session = Util.getSessionFactory().openSession();
@@ -38,69 +55,12 @@ public class AdminDAO {
         }
        return "success";
     }
-    
-    public String addOrUpdateTrainingDetails(TrainingBean trainingBean) {
-        
+    public String addOrUpdateReport(ReportBean reportBean) {
         Session session = Util.getSessionFactory().openSession();
         Transaction t = null;
         try {
             t = session.beginTransaction();
-           session.saveOrUpdate(trainingBean);
-            t.commit();
-        } catch (HibernateException e) {
-            if (t != null) {
-                t.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-       return "success";
-    }
-    
-     public String addOrUpdateQuestion(QuestionBean questionBean){
-         
-        Session session = Util.getSessionFactory().openSession();
-         Transaction t = null;
-        try {
-            t = session.beginTransaction();
-            session.saveOrUpdate(questionBean);
-            t.commit();
-        } catch (HibernateException e) {
-            if (t != null) {
-                t.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-        return "success";
-    }
-     
-    
-     public String addOrUpdateDailyTaskAllocation(DailyTaskAllocationBean dailyTaskAllocationBean){
-        Session session = Util.getSessionFactory().openSession();
-         Transaction t = null;
-        try {
-            t = session.beginTransaction();
-            session.saveOrUpdate(dailyTaskAllocationBean);
-            t.commit();
-        } catch (HibernateException e) {
-            if (t != null) {
-                t.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-        return "success";
-    }
-     public String addOrUpdateContent(ContentBean contentBean) {
-        Session session = Util.getSessionFactory().openSession();
-        Transaction t = null;
-        try {
-            t = session.beginTransaction();
-            session.saveOrUpdate(contentBean);
+            session.saveOrUpdate(reportBean);
             t.commit();
         } catch (HibernateException e) {
             if (t != null) {
@@ -112,4 +72,23 @@ public class AdminDAO {
         }
         return "success";
      }  
+      public String addOrUpdateTask(DailyTaskUpdationBean dailyTaskUpdationBean) {
+        Session session = Util.getSessionFactory().openSession();
+        Transaction t = null;
+        try {
+            t = session.beginTransaction();
+            session.saveOrUpdate(dailyTaskUpdationBean);
+            t.commit();
+        } catch (HibernateException e) {
+            if (t != null) {
+                t.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return "success";
+     }  
+     
+    
 }
