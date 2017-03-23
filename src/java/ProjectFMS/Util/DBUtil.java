@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Sushmitha
+ * @author bala
  */
 public class DBUtil {
     public static Connection getDBConnection() {
@@ -28,6 +28,5 @@ public class DBUtil {
 			System.out.println(e);
 		}
 		return null;
-	}    
-    
+	}
 }
