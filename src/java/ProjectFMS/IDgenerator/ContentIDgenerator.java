@@ -32,10 +32,10 @@ public class ContentIDgenerator implements IdentifierGenerator {
             int x = 0;
             try {
 
-                resultSet = statement.executeQuery("Select Salesman_Seq.nexttval from dual");
+                resultSet = statement.executeQuery("Select Content_Seq.nexttval from dual");
             } catch (Exception e) {
-                statement.execute("create sequence Salesman_Seq start with 1 increment by 1 nocycles nocache");
-                resultSet = statement.executeQuery("Select Salesman_Seq.nexttval from dual");
+                statement.execute("create sequence Content_Seq start with 1 increment by 1 nocycles nocache");
+                resultSet = statement.executeQuery("Select Content_Seq.nexttval from dual");
             }
             if (resultSet.next()) {
                 x = (Integer) resultSet.getInt(1);
