@@ -37,31 +37,48 @@ public class TrainerDAO {
         }
        return "success";
     }
-//     public String addOrUpdateLeaveDetails(LeaveBean leaveBean) {
-//        
-//        Session session = Util.getSessionFactory().openSession();
-//        Transaction t = null;
-//        try {
-//            t = session.beginTransaction();
-//           session.saveOrUpdate(leaveBean);
-//            t.commit();
-//        } catch (HibernateException e) {
-//            if (t != null) {
-//                t.rollback();
-//            }
-//            e.printStackTrace();
-//        } finally {
-//            session.close();
-//        }
-//       return "success";
-//    }
-    public String addOrUpdateTrainerDetails(TrainerBean trainerBean) {
+     public String addOrUpdateLeaveDetails(LeaveBean leaveBean) {
         
-        Session session = Util.getSessionFactory().openSession();
+       Session session = Util.getSessionFactory().openSession();
         Transaction t = null;
         try {
             t = session.beginTransaction();
-           session.saveOrUpdate(trainerBean);
+           session.saveOrUpdate(leaveBean);
+            t.commit();
+        } catch (HibernateException e) {
+            if (t != null) {
+                t.rollback();
+            }
+            e.printStackTrace();
+      } finally {
+            session.close();
+        }
+       return "success";
+    }
+  public String addOrUpdateTrainerDetails(TrainerBean trainerBean) {
+      
+      Session session = Util.getSessionFactory().openSession();
+      Transaction t = null;
+      try {
+          t = session.beginTransaction();
+         session.saveOrUpdate(trainerBean);
+          t.commit();
+      } catch (HibernateException e) {
+          if (t != null) {
+              t.rollback();
+          }
+          e.printStackTrace();
+      } finally {
+          session.close();
+      }
+     return "success";
+  }
+    public String addOrUpdateReport(ReportBean reportBean) {
+        Session session = Util.getSessionFactory().openSession();
+      Transaction t = null;
+        try {
+            t = session.beginTransaction();
+            session.saveOrUpdate(reportBean);
             t.commit();
         } catch (HibernateException e) {
             if (t != null) {
@@ -71,42 +88,25 @@ public class TrainerDAO {
         } finally {
             session.close();
         }
-       return "success";
-    }
-//    public String addOrUpdateReport(ReportBean reportBean) {
-//        Session session = Util.getSessionFactory().openSession();
-//        Transaction t = null;
-//        try {
-//            t = session.beginTransaction();
-//            session.saveOrUpdate(reportBean);
-//            t.commit();
-//        } catch (HibernateException e) {
-//            if (t != null) {
-//                t.rollback();
-//            }
-//            e.printStackTrace();
-//        } finally {
-//            session.close();
-//        }
-//        return "success";
-//     }  
-//      public String addOrUpdateTask(DailyTaskUpdationBean dailyTaskUpdationBean) {
-//        Session session = Util.getSessionFactory().openSession();
-//        Transaction t = null;
-//        try {
-//            t = session.beginTransaction();
-//            session.saveOrUpdate(dailyTaskUpdationBean);
-//            t.commit();
-//        } catch (HibernateException e) {
-//            if (t != null) {
-//                t.rollback();
-//            }
-//            e.printStackTrace();
-//        } finally {
-//            session.close();
-//        }
-//        return "success";
-//     }  
-     
+        return "success";
+     }  
+      public String addOrUpdateTask(DailyTaskUpdationBean dailyTaskUpdationBean) {
+        Session session = Util.getSessionFactory().openSession();
+        Transaction t = null;
+        try {
+           t = session.beginTransaction();
+            session.saveOrUpdate(dailyTaskUpdationBean);
+            t.commit();
+        } catch (HibernateException e) {
+            if (t != null) {
+                t.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return "success";
+     }  
+  
     
 }
