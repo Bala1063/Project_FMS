@@ -5,11 +5,7 @@
  */
 package ProjectFMS.DAO;
 
-import ProjectFMS.Bean.ContentBean;
-import ProjectFMS.Bean.DailyTaskAllocationBean;
-import ProjectFMS.Bean.QuestionBean;
-import ProjectFMS.Bean.TrainerBean;
-import ProjectFMS.Bean.TrainingBean;
+
 import ProjectFMS.Util.Util;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -19,7 +15,7 @@ import org.hibernate.Transaction;
  *
  * @author bala
  */
-public class AdminDAO {
+public class CommonDAO {
     public String addOrUpdateDetails(Object o) {
         
         Session session = Util.getSessionFactory().openSession();

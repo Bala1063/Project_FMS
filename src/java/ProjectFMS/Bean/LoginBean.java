@@ -6,6 +6,7 @@
 package ProjectFMS.Bean;
 
 import java.sql.Time;
+import java.util.Date;
 
 /**
  *
@@ -14,9 +15,9 @@ import java.sql.Time;
 public class LoginBean {
     private String userId;
     private String password;
-    private char type;
-    private Time inTime;
-    private Time outTime;
+    private String type;
+    private Date inTime;
+    private Date outTime;
     private String status;
 
     public String getUserId() {
@@ -35,25 +36,33 @@ public class LoginBean {
         this.password = password;
     }
 
-    public char getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(char type) {
+    public void setType(String type) {
         this.type = type;
     }
 
-    public Time getInTime() {
+   
+
+    public Date getInTime() {
         return inTime;
     }
 
-    public void setInTime(Time inTime) {
+    public void setInTime(Date inTime) {
         this.inTime = inTime;
     }
 
-    public Time getOutTime() {
+    public Date getOutTime() {
         return outTime;
     }
+
+    public void setOutTime(Date outTime) {
+        this.outTime = outTime;
+    }
+
+
 
     public void setOutTime(Time outTime) {
         this.outTime = outTime;
