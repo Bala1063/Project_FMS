@@ -16,7 +16,7 @@ import java.sql.Statement;
 
 /**
  *
- * @author Sushmitha
+ * @author PROJECT FMS
  */
 public class TrainingIDgenerator {
     public String generateTrainingId(TrainerBean trainerBean) {

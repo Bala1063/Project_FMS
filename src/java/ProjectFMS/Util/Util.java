@@ -10,7 +10,7 @@ import org.hibernate.cfg.Configuration;
 
 /**
  *
- * @author Sushmitha
+ * @author PROJECT FMS
  */
 public class Util {
         private static final SessionFactory sessionFactory;

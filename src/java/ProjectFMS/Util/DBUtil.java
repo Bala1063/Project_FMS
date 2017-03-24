@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author bala
+ * @author PROJECT FMS
  */
 public class DBUtil {
     public static Connection getDBConnection() {

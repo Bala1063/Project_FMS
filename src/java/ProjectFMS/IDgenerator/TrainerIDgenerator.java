@@ -14,7 +14,7 @@ import java.sql.Statement;
 
 /**
  *
- * @author AswiniAnjappan
+ * @author PROJECT FMS
  */
 public class TrainerIDgenerator {
 
