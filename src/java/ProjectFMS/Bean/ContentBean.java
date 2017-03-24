@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author bala
+ * @author PROJECT FMS
  */
 public class ContentBean {
     private String trainingId;

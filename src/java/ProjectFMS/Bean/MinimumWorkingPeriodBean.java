@@ -7,7 +7,7 @@ package ProjectFMS.Bean;
 
 /**
  *
- * @author bala
+ * @author PROJECT FMS
  */
 public class MinimumWorkingPeriodBean {
     private String trainerId;

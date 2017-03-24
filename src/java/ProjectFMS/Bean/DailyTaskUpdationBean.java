@@ -7,7 +7,7 @@ package ProjectFMS.Bean;
 
 /**
  *
- * @author Sushmitha
+ * @author PROJECT FMS
  */
 public class DailyTaskUpdationBean {
     private String trainerId;

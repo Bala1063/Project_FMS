@@ -11,7 +11,7 @@ import java.util.Date;
 
 /**
  *
- * @author bala
+ * @author PROJECT FMS
  */
 public class TrainingScheduleBean {
     private int id;

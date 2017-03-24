@@ -5,11 +5,13 @@
  */
 package ProjectFMS.Bean;
 
-import java.sql.Date;
+import java.util.Date;
+
+
 
 /**
  *
- * @author Sushmitha
+ * @author PROJECT FMS
  */
 public class ReportBean {
     private int id;

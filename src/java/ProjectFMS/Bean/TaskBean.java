@@ -7,7 +7,7 @@ package ProjectFMS.Bean;
 
 /**
  *
- * @author AswiniAnjappan
+ * @author PROJECT FMS
  */
 public class TaskBean {
     private String trainerId;

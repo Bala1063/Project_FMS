@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  *
- * @author bala
+ * @author PROJECT FMS
  */
 public class LoginBean {
     private String userId;

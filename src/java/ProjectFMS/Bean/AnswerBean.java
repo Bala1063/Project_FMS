@@ -7,7 +7,7 @@ package ProjectFMS.Bean;
 
 /**
  *
- * @author Sushmitha
+ * @author PROJECT FMS
  */
 public class AnswerBean {
     private String id;

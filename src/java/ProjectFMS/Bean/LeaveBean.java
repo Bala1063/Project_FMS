@@ -9,7 +9,7 @@ import java.sql.Date;
 
 /**
  *
- * @author AswiniAnjappan
+ * @author PROJECT FMS
  */
 public class LeaveBean {
     private String trainerId;
