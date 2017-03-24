@@ -23,11 +23,12 @@ import org.hibernate.Session;
  * @author Sushmitha
  */
 public class AdminDAO {
-    public String deleteContentsByContentId(List<String> contentIds){
+    public String removeContentsByContentId(List<String> contentIds){
  
         Session session=Util.getSessionFactory().openSession();
         for(int i=0;i<contentIds.size();i++){
-            Query query = session.createSQLQuery("delete from Content_tb where Content_id='"+contentIds.get(i)+"'");
+            Query query = session.createQuery("delete from ContentBean where contentId=:contentId");
+            query.setParameter("contentId", contentIds.get(i));
         }
         session.close();
         return "success";
@@ -54,16 +55,18 @@ public class AdminDAO {
         
         Session session=Util.getSessionFactory().openSession();
         for(int i=0;i<trainingIdList.size();i++){
-            Query query=session.createQuery("delete from TrainingBean where Training_id = '"+trainingIdList.get(i)+"'");
+            Query query=session.createQuery("delete from TrainingBean where trainingId=:trainingId");
+            query.setParameter("trainingId", trainingIdList.get(i));
         }
         return "success";
     }
     
-     public String deleteTrainerDetails(List<String> trainerIdList){ 
+     public String removeTrainerDetails(List<String> trainerIdList){ 
         
         Session session=Util.getSessionFactory().openSession();
         for(int i=0;i<trainerIdList.size();i++){
-            Query query=session.createQuery("delete from Trainer_tb where Training_id = '"+trainerIdList.get(i)+"'");
+            Query query=session.createQuery("delete from TrainerBean where trainerId = :trainerId");
+            query.setParameter("trainerId", trainerIdList.get(i));
         }
         return "success";
     }
