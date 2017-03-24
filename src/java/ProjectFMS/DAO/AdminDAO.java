@@ -7,11 +7,7 @@ package ProjectFMS.DAO;
 
 import ProjectFMS.Bean.ReportBean;
 import ProjectFMS.Bean.TrainingScheduleBean;
-import ProjectFMS.Util.Util;
-import java.util.List;
 import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import ProjectFMS.Util.Util;
 import java.util.List;
