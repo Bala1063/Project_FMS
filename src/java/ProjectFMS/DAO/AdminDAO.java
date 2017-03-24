@@ -48,6 +48,7 @@ public class AdminDAO {
         Session session = Util.getSessionFactory().openSession();
         Query query = session.createSQLQuery("From ReportBean");
         List<ReportBean> reportBeans = query.list();
+        session.close();
         return reportBeans;
 
     }
@@ -58,6 +59,7 @@ public class AdminDAO {
             Query query=session.createQuery("delete from TrainingBean where trainingId=:trainingId");
             query.setParameter("trainingId", trainingIdList.get(i));
         }
+        session.close();
         return "success";
     }
     
@@ -68,6 +70,7 @@ public class AdminDAO {
             Query query=session.createQuery("delete from TrainerBean where trainerId = :trainerId");
             query.setParameter("trainerId", trainerIdList.get(i));
         }
+        session.close();
         return "success";
     }
     public List<TrainingScheduleBean> viewTrainingScheduleByTrainerId(String trainerId) {
