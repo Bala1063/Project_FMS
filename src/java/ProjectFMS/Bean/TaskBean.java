@@ -9,19 +9,21 @@ package ProjectFMS.Bean;
  *
  * @author AswiniAnjappan
  */
-public class DailyTaskAllocationBean {
-    private String trainingId;
+public class TaskBean {
+    private String trainerId;
     private String taskId;
     private String task;
-    private int noOfDays;
+   
 
-    public String getTrainingId() {
-        return trainingId;
+    public String getTrainerId() {
+        return trainerId;
     }
 
-    public void setTrainingId(String trainingId) {
-        this.trainingId = trainingId;
+    public void setTrainerId(String trainerId) {
+        this.trainerId = trainerId;
     }
+
+  
 
     public String getTaskId() {
         return taskId;
@@ -39,12 +41,6 @@ public class DailyTaskAllocationBean {
         this.task = task;
     }
 
-    public int getNoOfDays() {
-        return noOfDays;
-    }
-
-    public void setNoOfDays(int noOfDays) {
-        this.noOfDays = noOfDays;
-    }
+   
     
 }
