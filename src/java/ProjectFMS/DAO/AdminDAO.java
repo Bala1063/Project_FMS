@@ -7,11 +7,7 @@ package ProjectFMS.DAO;
 
 import ProjectFMS.Bean.ReportBean;
 import ProjectFMS.Bean.TrainingScheduleBean;
-import ProjectFMS.Util.Util;
-import java.util.List;
 import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import ProjectFMS.Util.Util;
 import java.util.List;
@@ -40,11 +36,11 @@ public class AdminDAO {
         return reportBeans;
 
     }
-    public String deleteTrainingDetails(List<String> trainingIdList){ 
+    public String removeTrainingDetails(List<String> trainingIdList){ 
         
         Session session=Util.getSessionFactory().openSession();
         for(int i=0;i<trainingIdList.size();i++){
-            Query query=session.createQuery("delete from Training_tb where Training_id = '"+trainingIdList.get(i)+"'");
+            Query query=session.createQuery("delete from TrainingBean where Training_id = '"+trainingIdList.get(i)+"'");
         }
         return "success";
     }
