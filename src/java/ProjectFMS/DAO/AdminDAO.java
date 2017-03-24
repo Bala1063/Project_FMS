@@ -92,13 +92,13 @@ public class AdminDAO {
         return allTrainingScheduleList;
     }
     
-    public String viewTrainerByTrainerId(String trainerId){
+    public String viewTrainerNameByTrainerId(String trainerId){
         Session session = Util.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(TrainerBean.class);
         criteria.add(Restrictions.eq("Trainer_Id", trainerId));
-        List<TrainingBean> trainingBeanList=criteria.list();
+        List<TrainerBean> trainerBeanList=criteria.list();
         session.close();
-        return trainingBeanList.get(0).getTrainingName();
+        return trainerBeanList.get(0).getTrainerName();
     }
     
    
