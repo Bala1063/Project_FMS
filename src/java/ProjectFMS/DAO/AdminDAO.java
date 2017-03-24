@@ -49,7 +49,14 @@ public class AdminDAO {
         return "success";
     }
     
-    
+     public String deleteTrainerDetails(List<String> trainerIdList){ 
+        
+        Session session=Util.getSessionFactory().openSession();
+        for(int i=0;i<trainerIdList.size();i++){
+            Query query=session.createQuery("delete from Trainer_tb where Training_id = '"+trainerIdList.get(i)+"'");
+        }
+        return "success";
+    }
     public List<TrainingScheduleBean> viewTrainingScheduleByTrainerId(String trainerId) {
         Session session = Util.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(TrainingScheduleBean.class);
