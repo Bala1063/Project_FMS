@@ -5,10 +5,15 @@
  */
 package ProjectFMS.DAO;
 
+import ProjectFMS.Bean.MinimumWorkingPeriodBean;
+import ProjectFMS.Bean.ReportBean;
 import ProjectFMS.Util.Util;
+import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -33,4 +38,16 @@ public class CommonDAO {
         }
         return "success";
     }
+      public int getMinimumWorkingPeroid(String trainerId)
+      {
+           Session session = Util.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(MinimumWorkingPeriodBean.class);
+        criteria.add(Restrictions.eq("trainerId", trainerId));
+        if(!criteria.list().isEmpty()){
+        MinimumWorkingPeriodBean minimumWorkingPeriodBean = (MinimumWorkingPeriodBean)criteria.list().get(0);
+        return minimumWorkingPeriodBean.getMinimumWorkingPeriod();
+        }
+        session.close();
+        return -1;
+      }
 }
