@@ -5,8 +5,10 @@
  */
 package ProjectFMS.DAO;
 
+import ProjectFMS.Bean.LeaveBean;
 import ProjectFMS.Bean.TaskBean;
 import ProjectFMS.Util.Util;
+import java.util.Date;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
@@ -29,7 +31,14 @@ public class TrainerDAO {
         }
         return "fail";
     }
-   
-   
+
+    public String updateLeave(String trainerId, Date leaveDate) {
+
+        LeaveBean leaveBean = new LeaveBean();
+        leaveBean.setLeaveDate(leaveDate);
+        leaveBean.setTrainerId(trainerId);
+        new CommonDAO().addOrUpdateDetails(leaveBean);
+        return "success";
+    }
 
 }
