@@ -5,6 +5,7 @@
  */
 package ProjectFMS.DAO;
 
+import ProjectFMS.Bean.MinimumWorkingPeriodBean;
 import ProjectFMS.Util.Util;
 import java.util.List;
 import org.hibernate.Query;
@@ -117,6 +118,24 @@ public class AdminDAO {
         return allTrainingScheduleList;
     }
 
+    public String allocateMinimumWorkingPeriodList(List<String> trainerIdList,int minimumWorkingPeriod){
+        CommonDAO commonDAO=new CommonDAO();
+        for(int i=0;i<trainerIdList.size();i++){
+            MinimumWorkingPeriodBean minimumWorkingPeriodBean=new MinimumWorkingPeriodBean();
+            minimumWorkingPeriodBean.setTrainerId(trainerIdList.get(i));
+            minimumWorkingPeriodBean.setMinimumWorkingPeriod(minimumWorkingPeriod);
+            commonDAO.addOrUpdateDetails(minimumWorkingPeriodBean);            
+        }
+        return "success";
+    }
+    public String allocateMinimumWorkingPeriod(String trainerId,int minimumWorkingPeriod){
+        CommonDAO commonDAO=new CommonDAO();
+            MinimumWorkingPeriodBean minimumWorkingPeriodBean=new MinimumWorkingPeriodBean();
+            minimumWorkingPeriodBean.setTrainerId(trainerId);
+            minimumWorkingPeriodBean.setMinimumWorkingPeriod(minimumWorkingPeriod);
+            commonDAO.addOrUpdateDetails(minimumWorkingPeriodBean);                       
+        return "success";
+    }     
     
     public String viewTrainerNameByTrainerId(String trainerId){
         Session session = Util.getSessionFactory().openSession();

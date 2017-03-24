@@ -11,7 +11,7 @@ package ProjectFMS.Bean;
  */
 public class MinimumWorkingPeriodBean {
     private String trainerId;
-    private String minimumWorkingPeriod;
+    private int minimumWorkingPeriod;
     private TrainerBean trainerBean;
 
     public TrainerBean getTrainerBean() {
@@ -30,11 +30,11 @@ public class MinimumWorkingPeriodBean {
         this.trainerId = trainerId;
     }
 
-    public String getMinimumWorkingPeriod() {
+    public int getMinimumWorkingPeriod() {
         return minimumWorkingPeriod;
     }
 
-    public void setMinimumWorkingPeriod(String minimumWorkingPeriod) {
+    public void setMinimumWorkingPeriod(int minimumWorkingPeriod) {
         this.minimumWorkingPeriod = minimumWorkingPeriod;
     }
     
