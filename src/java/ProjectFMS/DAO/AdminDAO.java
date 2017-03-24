@@ -10,6 +10,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import ProjectFMS.Bean.ReportBean;
+import ProjectFMS.Bean.TrainerBean;
+import ProjectFMS.Bean.TrainingBean;
 import ProjectFMS.Bean.TrainingScheduleBean;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -89,5 +91,16 @@ public class AdminDAO {
         session.close();
         return allTrainingScheduleList;
     }
+    
+    public String viewTrainerByTrainerId(String trainerId){
+        Session session = Util.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(TrainerBean.class);
+        criteria.add(Restrictions.eq("Trainer_Id", trainerId));
+        List<TrainingBean> trainingBeanList=criteria.list();
+        session.close();
+        return trainingBeanList.get(0).getTrainingName();
+    }
+    
+   
 
 }
