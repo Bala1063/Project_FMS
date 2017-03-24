@@ -6,14 +6,12 @@
 package ProjectFMS.DAO;
 
 
-
-
-
 import ProjectFMS.Bean.ReportBean;
 import ProjectFMS.Bean.TrainingScheduleBean;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import ProjectFMS.Util.Util;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -23,17 +21,39 @@ import org.hibernate.Session;
  * @author Sushmitha
  */
 public class AdminDAO {
-    public String deleteContentsByContentId(List<String> contentIds){
+    public String removeContentsByContentId(List<String> contentIds){
  
         Session session=Util.getSessionFactory().openSession();
         for(int i=0;i<contentIds.size();i++){
-            Query query = session.createSQLQuery("delete from Content_tb where Content_id='"+contentIds.get(i)+"'");
+            Query query = session.createQuery("delete from ContentBean where contentId=:contentId");
+            query.setParameter("contentId", contentIds.get(i));
         }
         session.close();
         return "success";
     }
     
-
+    public String allocateTrainingList(List<String> trainerIdList,String trainingId,Date fromDate,Date toDate){
+        CommonDAO commonDAO=new CommonDAO();
+        for(int i=0;i<trainerIdList.size();i++){
+           TrainingScheduleBean trainingScheduleBean=new TrainingScheduleBean();
+           trainingScheduleBean.setTrainerId(trainerIdList.get(i));
+           trainingScheduleBean.setTrainingId(trainingId);
+           trainingScheduleBean.setFromDate(fromDate);
+           trainingScheduleBean.setToDate(toDate);
+           commonDAO.addOrUpdateDetails(trainingScheduleBean);
+        }
+        return "success";
+    }
+    public String allocateTraining(String trainerId,String trainingId,Date fromDate,Date toDate){
+        CommonDAO commonDAO=new CommonDAO();
+        TrainingScheduleBean trainingScheduleBean=new TrainingScheduleBean();
+        trainingScheduleBean.setTrainerId(trainerId);
+        trainingScheduleBean.setTrainingId(trainingId);
+        trainingScheduleBean.setFromDate(fromDate);
+        trainingScheduleBean.setToDate(toDate);
+        commonDAO.addOrUpdateDetails(trainingScheduleBean);
+        return "success";
+    }
     public List<ReportBean> viewReportByTrainerId(String trainerId) {
         Session session = Util.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(ReportBean.class);
@@ -47,24 +67,29 @@ public class AdminDAO {
         Session session = Util.getSessionFactory().openSession();
         Query query = session.createSQLQuery("From ReportBean");
         List<ReportBean> reportBeans = query.list();
+        session.close();
         return reportBeans;
 
     }
-    public String deleteTrainingDetails(List<String> trainingIdList){ 
+    public String removeTrainingDetails(List<String> trainingIdList){ 
         
         Session session=Util.getSessionFactory().openSession();
         for(int i=0;i<trainingIdList.size();i++){
-            Query query=session.createQuery("delete from Training_tb where Training_id = '"+trainingIdList.get(i)+"'");
+            Query query=session.createQuery("delete from TrainingBean where trainingId=:trainingId");
+            query.setParameter("trainingId", trainingIdList.get(i));
         }
+        session.close();
         return "success";
     }
     
-     public String deleteTrainerDetails(List<String> trainerIdList){ 
+     public String removeTrainerDetails(List<String> trainerIdList){ 
         
         Session session=Util.getSessionFactory().openSession();
         for(int i=0;i<trainerIdList.size();i++){
-            Query query=session.createQuery("delete from Trainer_tb where Training_id = '"+trainerIdList.get(i)+"'");
+            Query query=session.createQuery("delete from TrainerBean where trainerId = :trainerId");
+            query.setParameter("trainerId", trainerIdList.get(i));
         }
+        session.close();
         return "success";
     }
     public List<TrainingScheduleBean> viewTrainingScheduleByTrainerId(String trainerId) {
