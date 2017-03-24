@@ -27,11 +27,11 @@ import org.hibernate.Session;
  * @author Sushmitha
  */
 public class AdminDAO {
-    public String deleteContentsByContentId(List<String> contentIds){
+    public String deleteContentByContentIds(List<String> contentIdList){
  
         Session session=Util.getSessionFactory().openSession();
-        for(int i=0;i<contentIds.size();i++){
-            Query query = session.createSQLQuery("delete from Content_tb where Content_id='"+contentIds.get(i)+"'");
+        for(int i=0;i<contentIdList.size();i++){
+            Query query = session.createSQLQuery("delete from Content_tb where Content_id='"+contentIdList.get(i)+"'");
         }
         session.close();
         return "success";
@@ -51,6 +51,7 @@ public class AdminDAO {
         Session session = Util.getSessionFactory().openSession();
         Query query = session.createSQLQuery("From ReportBean");
         List<ReportBean> reportBeans = query.list();
+        session.close();
         return reportBeans;
 
     }
@@ -60,6 +61,7 @@ public class AdminDAO {
         for(int i=0;i<trainingIdList.size();i++){
             Query query=session.createQuery("delete from Training_tb where Training_id = '"+trainingIdList.get(i)+"'");
         }
+        session.close();
         return "success";
     }
     
@@ -69,6 +71,7 @@ public class AdminDAO {
         for(int i=0;i<trainerIdList.size();i++){
             Query query=session.createQuery("delete from Trainer_tb where Training_id = '"+trainerIdList.get(i)+"'");
         }
+        session.close();
         return "success";
     }
     public List<TrainingScheduleBean> viewTrainingScheduleByTrainerId(String trainerId) {
