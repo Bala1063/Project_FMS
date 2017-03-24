@@ -5,6 +5,13 @@
  */
 package ProjectFMS.DAO;
 
+import ProjectFMS.Util.Util;
+import java.util.List;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import ProjectFMS.Bean.ReportBean;
+import ProjectFMS.Bean.TrainerBean;
+import ProjectFMS.Bean.TrainingBean;
 
 import ProjectFMS.Bean.ReportBean;
 import ProjectFMS.Bean.TrainingScheduleBean;
@@ -32,6 +39,7 @@ public class AdminDAO {
         return "success";
     }
     
+
     public String allocateTrainingList(List<String> trainerIdList,String trainingId,Date fromDate,Date toDate){
         CommonDAO commonDAO=new CommonDAO();
         for(int i=0;i<trainerIdList.size();i++){
@@ -108,5 +116,17 @@ public class AdminDAO {
         session.close();
         return allTrainingScheduleList;
     }
+
+    
+    public String viewTrainerByTrainerId(String trainerId){
+        Session session = Util.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(TrainerBean.class);
+        criteria.add(Restrictions.eq("Trainer_Id", trainerId));
+        List<TrainingBean> trainingBeanList=criteria.list();
+        session.close();
+        return trainingBeanList.get(0).getTrainingName();
+    }
+    
+   
 
 }
