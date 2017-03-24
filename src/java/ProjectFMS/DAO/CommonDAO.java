@@ -5,7 +5,6 @@
  */
 package ProjectFMS.DAO;
 
-
 import ProjectFMS.Util.Util;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -13,16 +12,16 @@ import org.hibernate.Transaction;
 
 /**
  *
- * @author bala
+ * @author Sushmitha
  */
 public class CommonDAO {
-    public String addOrUpdateDetails(Object o) {
-        
+      public String addOrUpdateDetails(Object o) {
+
         Session session = Util.getSessionFactory().openSession();
         Transaction t = null;
         try {
             t = session.beginTransaction();
-           session.saveOrUpdate(o);
+            session.saveOrUpdate(o);
             t.commit();
         } catch (HibernateException e) {
             if (t != null) {
@@ -32,7 +31,6 @@ public class CommonDAO {
         } finally {
             session.close();
         }
-       return "success";
+        return "success";
     }
-  
 }

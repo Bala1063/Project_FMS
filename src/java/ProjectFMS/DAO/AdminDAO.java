@@ -17,10 +17,14 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+import ProjectFMS.Util.Util;
+import java.util.List;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 /**
  *
- * @author bala
+ * @author Sushmitha
  */
 public class AdminDAO {
     public String deleteContentsByContentId(List<String> contentIds){
@@ -50,7 +54,23 @@ public class AdminDAO {
         return reportBeans;
 
     }
+    public String deleteTrainingDetails(List<String> trainingIdList){ 
+        
+        Session session=Util.getSessionFactory().openSession();
+        for(int i=0;i<trainingIdList.size();i++){
+            Query query=session.createQuery("delete from Training_tb where Training_id = '"+trainingIdList.get(i)+"'");
+        }
+        return "success";
+    }
     
+     public String deleteTrainerDetails(List<String> trainerIdList){ 
+        
+        Session session=Util.getSessionFactory().openSession();
+        for(int i=0;i<trainerIdList.size();i++){
+            Query query=session.createQuery("delete from Trainer_tb where Training_id = '"+trainerIdList.get(i)+"'");
+        }
+        return "success";
+    }
     public List<TrainingScheduleBean> viewTrainingScheduleByTrainerId(String trainerId) {
         Session session = Util.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(TrainingScheduleBean.class);
