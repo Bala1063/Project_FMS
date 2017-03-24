@@ -12,6 +12,6 @@ and open the template in the editor.
     </id>
     <property column="Trainer_id" name="trainerId" type="string"/>
     <property column="Task" name="task" type="string"/>
-  
-  </class>
+      <property column="Task_Status" name="taskStatus" type="string"/>
+    </class>
 </hibernate-mapping>

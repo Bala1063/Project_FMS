@@ -13,6 +13,17 @@ public class TaskBean {
     private String trainerId;
     private String taskId;
     private String task;
+    private String taskStatus;
+    
+
+    public String getTaskStatus() {
+        return taskStatus;
+    }
+
+    public void setTaskStatus(String taskStatus) {
+        this.taskStatus = taskStatus;
+    }
+    
    
 
     public String getTrainerId() {

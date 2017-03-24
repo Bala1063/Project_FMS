@@ -25,7 +25,7 @@ public class TrainerBean {
     private MinimumWorkingPeriodBean minimumWorkingPeriodBean;
     private List<LeaveBean> leaveBeans;
     private List<TrainingScheduleBean> trainingScheduleBeans;
-    private List<DailyTaskUpdationBean> dailyTaskUpdationBeans;
+    private List<TaskBean> taskBeans;
 
     public MinimumWorkingPeriodBean getMinimumWorkingPeriodBean() {
         return minimumWorkingPeriodBean;
@@ -52,14 +52,15 @@ public class TrainerBean {
         this.trainingScheduleBeans = trainingScheduleBeans;
     }
 
-    public List<DailyTaskUpdationBean> getDailyTaskUpdationBeans() {
-        return dailyTaskUpdationBeans;
+    public List<TaskBean> getTaskBeans() {
+        return taskBeans;
     }
 
-    public void setDailyTaskUpdationBeans(List<DailyTaskUpdationBean> dailyTaskUpdationBeans) {
-        this.dailyTaskUpdationBeans = dailyTaskUpdationBeans;
+    public void setTaskBeans(List<TaskBean> taskBeans) {
+        this.taskBeans = taskBeans;
     }
 
+   
        
     
 

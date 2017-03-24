@@ -30,11 +30,12 @@ and open the template in the editor.
             <index column="type"/>
             <one-to-many  class="ProjectFMS.Bean.TrainingScheduleBean" />
         </list>
-        <list name="dailyTaskUpdationBeans" table="ProjectFMS.Bean.DailyTaskUpdationBean" cascade="all" lazy="false">
-            <key column="Trainer_id"/>
-            <index column="type"/>
-            <one-to-many class="ProjectFMS.Bean.DailyTaskUpdationBean" />
-        </list>
+    </list>
+    <list name="taskBeans" table="ProjectFMS.Bean.TaskBean" cascade="all" lazy="false">
+        <key column="Trainer_id"/>
+        <index column="type"/>
+        <one-to-many class="ProjectFMS.Bean.TaskBean" />
+    </list>
     </class>
 </hibernate-mapping>
 
