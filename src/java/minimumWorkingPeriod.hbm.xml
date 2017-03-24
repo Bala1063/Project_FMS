@@ -12,7 +12,7 @@ and open the template in the editor.
                 <param name="property">trainerBean</param>
             </generator>
         </id>
-        <property name="minimumWorkingPeriod" type="string" column="Minimum_working_period"/>
+        <property name="minimumWorkingPeriod" type="int" column="Minimum_working_period"/>
         <one-to-one name="trainerBean" ></one-to-one>
     
     </class>
