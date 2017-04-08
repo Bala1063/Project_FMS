@@ -5,16 +5,20 @@
  */
 package ProjectFMS.DAO;
 
+import ProjectFMS.Bean.DefaultMWP;
 import ProjectFMS.Bean.MinimumWorkingPeriodBean;
 import ProjectFMS.Bean.ReportBean;
+import ProjectFMS.Bean.TrainerBean;
 import ProjectFMS.Bean.TrainingScheduleBean;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import ProjectFMS.Util.Util;
 import java.util.Date;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -51,27 +55,35 @@ public class AdminDAO {
 
     }
 
-    public String removeTrainingDetails(List<String> trainingIdList) {
-
+    public String removeTrainingDetails(String trainingId) {
         Session session = Util.getSessionFactory().openSession();
-        for (int i = 0; i < trainingIdList.size(); i++) {
-            Query query = session.createQuery("delete from TrainingBean where trainingId=:trainingId");
-            query.setParameter("trainingId", trainingIdList.get(i));
-        }
+        Query query = session.createQuery("delete from TrainingBean where trainingId = :trainingId");
+        query.setParameter("trainingId", trainingId);
         session.close();
         return "success";
     }
 
-    public String removeTrainerDetails(List<String> trainerIdList) {
+    public String removeTrainerDetails(String trainerId) {
 
         Session session = Util.getSessionFactory().openSession();
-        for (int i = 0; i < trainerIdList.size(); i++) {
-            Query query = session.createQuery("delete from TrainerBean where trainerId = :trainerId");
-            query.setParameter("trainerId", trainerIdList.get(i));
+        Transaction t = null;
+        try {
+            t = session.beginTransaction();
+            TrainerBean trainerBean=(TrainerBean)session.get(TrainerBean.class, trainerId);
+            session.delete(trainerBean);
+            t.commit();
+        } catch (HibernateException e) {
+            if (t != null) {
+                t.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
         }
-        session.close();
         return "success";
-    }
+        }
+        
+    
 
     public TrainingScheduleBean viewTrainingScheduleByTrainerId(String trainerId) {
         Session session = Util.getSessionFactory().openSession();
@@ -180,5 +192,11 @@ public class AdminDAO {
         new CommonDAO().addOrUpdateDetails(minimumWorkingPeriodBean);
         return "success";
     }
-
-}
+    public DefaultMWP getDefaultMWP()
+    {
+         Session session = Util.getSessionFactory().openSession();
+            DefaultMWP defaultMWP = (DefaultMWP) session.get(DefaultMWP.class, 1);
+            session.close();
+            return defaultMWP;
+    }
+    }

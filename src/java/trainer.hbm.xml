@@ -16,22 +16,22 @@ and open the template in the editor.
         <property name="selfSkilling" type="string" column="Self_skilling"/>
         <property name="qualifications" type="string" column="Qualifications"/>
         <property name="mailId" type="string" column="Mail_id"/>
-        <property name="phoneNo" type="int" column="Phone_no"/>
-        <property name="dateOfBirth" type="string" column="Date_of_birth"/>
-        <one-to-one name="minimumWorkingPeriodBean" class="ProjectFMS.Bean.MinimumWorkingPeriodBean" cascade="all" lazy="false">
+        <property name="phoneNo" type="long" column="Phone_no"/>
+        <property name="dateOfBirth" type="date" column="Date_of_birth"/>
+        <one-to-one name="minimumWorkingPeriodBean" class="ProjectFMS.Bean.MinimumWorkingPeriodBean" cascade="save-update,delete,delete-orphan" lazy="false">
         </one-to-one>
-        <list name="leaveBeans" class="ProjectFms.Bean.LeaveBean" cascade="all" lazy="false">
+        <list name="leaveBeans" table="ProjectFMS.Bean.LeaveBean" cascade="save-update,delete,delete-orphan" lazy="false">
             <key column="Trainer_id"/>
             <index column="type"/>
             <one-to-many  class="ProjectFMS.Bean.LeaveBean" />
         </list>
-        <list name="trainingScheduleBeans" table="ProjectFMS.Bean.TrainingScheduleBean" cascade="all" lazy="false">
+        <list name="trainingScheduleBeans" table="ProjectFMS.Bean.TrainingScheduleBean" cascade="save-update,delete,delete-orphan" lazy="false">
             <key column="Trainer_id"/>
             <index column="type"/>
             <one-to-many  class="ProjectFMS.Bean.TrainingScheduleBean" />
         </list>
-    </list>
-    <list name="taskBeans" table="ProjectFMS.Bean.TaskBean" cascade="all" lazy="false">
+    
+    <list name="taskBeans" table="ProjectFMS.Bean.TaskBean" cascade="save-update,delete,delete-orphan" lazy="false">
         <key column="Trainer_id"/>
         <index column="type"/>
         <one-to-many class="ProjectFMS.Bean.TaskBean" />

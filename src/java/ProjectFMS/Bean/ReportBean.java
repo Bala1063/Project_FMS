@@ -16,7 +16,7 @@ import java.util.Date;
 public class ReportBean {
     private int id;
     private String trainerId;
-    private Date date;
+    private Date reportDate;
     private String institution;
     private String batchId;
     private int totalStrength;
@@ -39,18 +39,16 @@ public class ReportBean {
         this.trainerId = trainerId;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getReportDate() {
+        return reportDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setReportDate(Date reportDate) {
+        this.reportDate = reportDate;
     }
-
     public String getInstitution() {
         return institution;
     }
-
     public void setInstitution(String institution) {
         this.institution = institution;
     }

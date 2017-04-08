@@ -10,7 +10,7 @@ and open the template in the editor.
         <id name="id" type="int" column="id">
             <generator class="increment"/>
         </id>
-        <property name="date" type="date" column="Date"/>
+        <property name="reportDate" type="date" column="Report_date"/>
         <property name="institution" type="string" column="Institution"/>
         <property name="batchId" type="string" column="Batch_id"/>
         <property name="totalStrength" type="int" column="Total_strength"/>

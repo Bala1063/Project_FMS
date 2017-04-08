@@ -30,10 +30,10 @@ public class QuestionIDgenerator {
             int x = 0;
             try {
 
-                resultSet = statement.executeQuery("Select Question_Seq.nexttval from dual");
+                resultSet = statement.executeQuery("Select Question_Seq.nextval from dual");
             } catch (Exception e) {
-                statement.execute("create sequence Question_Seq start with 1 increment by 1 nocycles nocache");
-                resultSet = statement.executeQuery("Select Question_Seq.nexttval from dual");
+                statement.execute("create sequence Question_Seq start with 1 increment by 1 nocycle nocache");
+                resultSet = statement.executeQuery("Select Question_Seq.nextval from dual");
             }
             if (resultSet.next()) {
                 x = (Integer) resultSet.getInt(1);

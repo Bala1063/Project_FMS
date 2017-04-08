@@ -11,7 +11,7 @@ and open the template in the editor.
             <generator class="assigned"/>
         </id>
         <property name="trainingName" type="string" column="Training_name"/>
-        <list name="contentBeans" cascade="all" lazy="false">
+        <list name="contentBeans" cascade="save-update,delete,delete-orphan" lazy="false">
             <key column="Training_id"/>
             <index column="type"/>
             <one-to-many class="ProjectFMS.Bean.ContentBean"/>

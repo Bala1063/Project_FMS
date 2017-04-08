@@ -20,7 +20,7 @@ public class TrainerBean {
     private String selfSkilling;
     private String qualifications;
     private String mailId;
-    private int phoneNo;
+    private long phoneNo;
     private Date dateOfBirth;
     private MinimumWorkingPeriodBean minimumWorkingPeriodBean;
     private List<LeaveBean> leaveBeans;
@@ -50,6 +50,11 @@ public class TrainerBean {
 
     public void setTrainingScheduleBeans(List<TrainingScheduleBean> trainingScheduleBeans) {
         this.trainingScheduleBeans = trainingScheduleBeans;
+    }
+
+    @Override
+    public String toString() {
+        return  trainerId + "," + trainerName + "," + areaOfSpecialization + "," + institution + "," + selfSkilling + "," + qualifications + "," + mailId + "," + phoneNo + "," + dateOfBirth+"," +getMinimumWorkingPeriodBean().getMinimumWorkingPeriod();
     }
 
     public List<TaskBean> getTaskBeans() {
@@ -120,11 +125,11 @@ public class TrainerBean {
         this.mailId = mailId;
     }
 
-    public int getPhoneNo() {
+    public long getPhoneNo() {
         return phoneNo;
     }
 
-    public void setPhoneNo(int phoneNo) {
+    public void setPhoneNo(long phoneNo) {
         this.phoneNo = phoneNo;
     }
 

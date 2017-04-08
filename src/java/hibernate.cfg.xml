@@ -46,6 +46,19 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
     <property name="hibernate.connection.username">projectfms</property>
     <property name="hibernate.connection.password">projectfms</property>
-    <property name="hibernate.hbm2ddl.auto">create</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.show_sql">true</property>
+    <mapping resource="login.hbm.xml"/>
+    <mapping resource="training.hbm.xml"/>
+    <mapping resource="report.hbm.xml"/>
+    <mapping resource="leave.hbm.xml"/>
+    <mapping resource="answer.hbm.xml"/>
+    <mapping resource="content.hbm.xml"/>
+    <mapping resource="question.hbm.xml"/>
+    <mapping resource="trainingSchedule.hbm.xml"/>
+    <mapping resource="minimumWorkingPeriod.hbm.xml"/>
+    <mapping resource="taskBean.hbm.xml"/>
+    <mapping resource="trainer.hbm.xml"/>
+    <mapping resource="defaultMWP.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
