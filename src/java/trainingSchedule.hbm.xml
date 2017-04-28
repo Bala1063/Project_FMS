@@ -7,12 +7,28 @@ and open the template in the editor.
 -->
 <hibernate-mapping>
     <class name="ProjectFMS.Bean.TrainingScheduleBean" table="TrainingSchedule_tb">
-        <id name="id" type="int" column="id">
-            <generator class="increment"/>
+        <id name="trainingId" type="string" column="Training_id">
+            <generator class="assigned"/>
         </id>
+        <property name="trainerId" type="string" column="Trainer_id"/>
         <property name="fromDate" type="date" column="From_date"/>
         <property name="toDate" type="date" column="To_date"/>
-   
+        <property name="trainingStream" type="string" column="Training_stream"/>
+        <list name="contentBeans" cascade="save-update,delete,delete-orphan" lazy="false">
+            <key column="Training_id"/>
+            <index column="type"/>
+            <one-to-many class="ProjectFMS.Bean.ContentBean"/>
+        </list>
+        <list name="questionBeans" cascade="save-update,delete,delete-orphan" lazy="false">
+            <key column="Training_id" />
+            <index column="type"/>
+            <one-to-many class="ProjectFMS.Bean.QuestionBean"/>
+        </list>
+        <list name="taskBeans" table="ProjectFMS.Bean.TaskBean" cascade="save-update,delete,delete-orphan" lazy="false">
+            <key column="Training_id"/>
+            <index column="type"/>
+            <one-to-many class="ProjectFMS.Bean.TaskBean" />
+        </list>
     </class>
 </hibernate-mapping>
 

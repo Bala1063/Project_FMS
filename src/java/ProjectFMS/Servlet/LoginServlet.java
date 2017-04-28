@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class LoginServlet extends HttpServlet {
 
-    
     public String login(String userId, String password) {
         return new LoginDAO().login(userId, password);
     }
@@ -31,7 +30,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String operation = request.getParameter("operation");
-               if (operation.equalsIgnoreCase("login")) {
+        if (operation.equalsIgnoreCase("login")) {
             String userId = request.getParameter("username");
             String password = request.getParameter("password");
             String result = login(userId, password);
@@ -39,18 +38,16 @@ public class LoginServlet extends HttpServlet {
 
             } else if (result.equalsIgnoreCase("A")) {
                 request.getSession().setAttribute("userId", userId);
-                response.sendRedirect("AdminHomePage.html");
+                response.sendRedirect("AdminHomePage.jsp");
             } else if (result.equalsIgnoreCase("T")) {
-                 request.getSession().setAttribute("userId", userId);
-                response.sendRedirect("TrainerHomePage.html");
+                request.getSession().setAttribute("userId", userId);
+                response.sendRedirect("TrainerHomePage.jsp");
 
-            }
-            else if (result.equalsIgnoreCase("P")) {
-                 request.getSession().setAttribute("userId", userId);
-                response.sendRedirect("PMOHomePage.html");
+            } else if (result.equalsIgnoreCase("P")) {
+                request.getSession().setAttribute("userId", userId);
+                response.sendRedirect("PMOHomePage.jsp");
 
-            }
-            else if (result.equalsIgnoreCase("fail")) {
+            } else if (result.equalsIgnoreCase("fail")) {
 
             }
 
@@ -65,17 +62,33 @@ public class LoginServlet extends HttpServlet {
             }
 
         }
-        if(operation.equalsIgnoreCase("submit"))
-        {
-            String userId=(String) request.getSession(false).getAttribute("userId");
-            String newPassword=request.getParameter("newpassword");
-            String result=new LoginDAO().changePassword(userId, newPassword);
-            if(!result.equalsIgnoreCase("fail"))
-            {                
-             request.setAttribute("changeStatus", result);
-             request.getRequestDispatcher("passwordchange.jsp").forward(request, response);
+        if (operation.equalsIgnoreCase("submit")) {
+            String userId = (String) request.getSession(false).getAttribute("userId");
+            String newPassword = request.getParameter("newpassword");
+            String result = new LoginDAO().changePassword(userId, newPassword);
+            if (!result.equalsIgnoreCase("fail")) {
+                request.setAttribute("status", "Password Changed");
+                if (result.equalsIgnoreCase("T")) {
+
+                    request.getRequestDispatcher("TrainerChangePassword.jsp").forward(request, response);
+                } else if (result.equalsIgnoreCase("A")) {
+                    request.getRequestDispatcher("AdminChangePassword.jsp").forward(request, response);
+                } else if (result.equalsIgnoreCase("P")) {
+                    request.getRequestDispatcher("PMOChangePassword.jsp").forward(request, response);
+                }
+            } else {
+                request.setAttribute("status", "Servor Problem try again later");
+                if (result.equalsIgnoreCase("T")) {
+
+                    request.getRequestDispatcher("TrainerChangePassword.jsp").forward(request, response);
+                } else if (result.equalsIgnoreCase("A")) {
+                    request.getRequestDispatcher("AdminChangePassword.jsp").forward(request, response);
+                } else if (result.equalsIgnoreCase("P")) {
+                    request.getRequestDispatcher("PMOChangePassword.jsp").forward(request, response);
+                }
+
             }
-            
+
         }
     }
 

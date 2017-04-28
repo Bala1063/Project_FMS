@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AdminUpdateTrainer
-    Created on : Apr 7, 2017, 5:33:33 AM
+    Document   : AdminViewTrainerActivities
+    Created on : Apr 23, 2017, 11:28:12 AM
     Author     : bala
 --%>
 
@@ -16,19 +16,9 @@
         <link href="css/admin.css" rel="stylesheet">
         <script src="jquery/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <title>Admin Update Trainer</title>
+        <title>Admin Home Page</title>
         <script>
-
             var req;
-            function checkStatus()
-            {
-                var x = document.getElementById("status").value;
-                if (x != "")
-                {
-                    document.getElementById("status").value = "";
-                    window.alert(x);
-                }
-            }
             function get()
             {
                 if (window.XMLHttpRequest) {
@@ -40,7 +30,11 @@
             }
             function institutionlist()
             {
-                checkStatus();
+                document.getElementById('schedule').style.display = "none";
+                document.getElementById('task').style.display = "none";
+                document.getElementById('content').style.display = "none";
+                document.getElementById('question').style.display = "none";
+                document.getElementById('nodata').style.display = "none";
                 req = get();
                 var url = "AdminTrainerServlet?operation=institutionlist";
                 req.onreadystatechange = function () {
@@ -54,6 +48,7 @@
             }
             function namelist(institution)
             {
+
                 req = get();
                 var url = "AdminTrainerServlet?operation=namelist&&institution=" + institution;
                 req.onreadystatechange = function () {
@@ -65,53 +60,47 @@
                 req.open("POST", url, true);
                 req.send(null);
             }
-            function getDetails(institution, trainername)
+            function traineractivity(trainername, institution)
             {
+
+                document.getElementById('schedule').style.display = "none";
+                document.getElementById('task').style.display = "none";
+                document.getElementById('content').style.display = "none";
+                document.getElementById('question').style.display = "none";
+                document.getElementById('nodata').style.display = "none";
                 req = get();
-                var url = "AdminTrainerServlet?operation=getDetails&&institution=" + institution + "&&trainername=" + trainername;
+                var url = "AdminTrainerServlet?operation=traineractivity&&trainername=" + trainername + "&&institution=" + institution;
                 req.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
 
+                        document.getElementById('trainingstream').value = "";
+                        document.getElementById('commencingdate').value = "";
+                        document.getElementById('endingdate').value = "";
+                        document.getElementById('noofdays').value = ""
+                        document.getElementById('content').innerHTML = "";
+                        document.getElementById('question').innerHTML = "";
+
                         var details = this.responseText.split(",");
-                        if (details.length > 1)
-                        {
-                            document.getElementById("userid").value = details[0];
-                            document.getElementById("areaofspecialization").value = details[2];
-                            document.getElementById("qualifications").value = details[4];
-                            document.getElementById("mailid").value = details[5];
-                            document.getElementById("phoneno").value = details[6];
-                            var date = new Date(details[7]);
-                            var year = date.getFullYear();
-                            var month = "";
-                            var day = "";
-                            if (date.getMonth() + 1 < 10)
-                            {
-                                month = "0" + date.getMonth();
-                            } else
-                            {
-                                month = date.getMonth() + 1 + "";
-                            }
-                            if (date.getDate() < 10)
-                            {
-                                day = "" + date.getDate();
-                            } else
-                            {
-                                day = date.getDate() + "";
+                        if (details.length > 1) {
+                            document.getElementById('trainingstream').innerHTML = details[0];
+                            document.getElementById('commencingdate').innerHTML = details[1];
+                            document.getElementById('endingdate').innerHTML = details[2];
+                            document.getElementById('noofdays').innerHTML = details[3];
+                            document.getElementById('schedule').style.display = "block";
+                            document.getElementById('tasklist').innerHTML = details[4];
+                            document.getElementById('task').style.display = "block";
+                            if (details[5] != "nocontent") {
+                                document.getElementById('content').innerHTML = " <table class='table table-striped table-hover '><caption class='col-md-offset-4'><h2>Content</h2></caption></table>" + details[5];
+                                document.getElementById('content').style.display = "block";
                             }
 
-
-                            document.getElementById("dateofbirth").value = year + "-" + month + "-" + day;
-                            ;
+                            if (details[6].trim() != 'noquestion') {
+                                document.getElementById('question').innerHTML = " <table class='table table-striped table-hover '><caption class='col-md-offset-4'><h2>Question</h2></caption></table>" + details[6];
+                                document.getElementById('question').style.display = "block";
+                            }
                         } else
                         {
-                            document.getElementById("userid").value = "";
-                            document.getElementById("areaofspecialization").value = "";
-                            document.getElementById("selfskilling").value = "";
-                            document.getElementById("qualifications").value = "";
-                            document.getElementById("mailid").value = "";
-                            document.getElementById("phoneno").value = "";
-                            document.getElementById("dateofbirth").value = "";
-
+                            document.getElementById('nodata').style.display = "block";
                         }
                     }
                 };
@@ -137,6 +126,7 @@
                 </form> 
             </div>
         </nav>
+
         <nav class="navbar navbar-inverse navbar-fixed-top down">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -151,7 +141,6 @@
                             <li><h6 class="dropdown-header">Minimum Working Period</h6></li>
                             <li><a href="AdminSetDMWP.jsp">Set Default Minimum Working Period</a></li>
                             <li><a href="AdminSetMWP.jsp">Update Individual Minimum Working Period</a></li>
-
                         </ul>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Training <span class="caret"></span></a>
@@ -163,7 +152,6 @@
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Daily Task <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="AdminAddTask.jsp">Add Task</a></li>
-
                         </ul>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">View <span class="caret"></span></a>
@@ -181,11 +169,11 @@
             </div>
         </nav>
         <div class="container">
-            <form class="form-horizontal center" action="AdminTrainerServlet" method="post">
+            <form class="form-horizontal center" >
                 <div class="form-group">
                     <label for="institution" class="col-sm-2 control-label">Institution</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" id="institution" name="institution" list="institutionlist" placeholder="Institution" oninput="namelist(this.value)" value="">
+                        <input type="text" class="form-control" id="institution" list="institutionlist" name="institution" placeholder="Institution" oninput="namelist(this.value)" value="">
                     </div>
                     <datalist id="institutionlist">
 
@@ -194,57 +182,67 @@
                 <div class="form-group">
                     <label for="trainername" class="col-sm-2 control-label">Trainer Name</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" id="trainername" list="namelist" name="trainername" placeholder="Trainer Name" oninput="getDetails(document.getElementById('institution').value,this.value)" value="">
+                        <input type="text" class="form-control" id="trainername" name="trainername" list="namelist" placeholder="Trainer Name" value="">
                     </div>
                     <datalist id="namelist">
 
                     </datalist>
-                </div>
-                <div class="form-group">
-                    <label for="areaofspecialization" class="col-sm-2 control-label">Area of Specialization</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" id="areaofspecialization" name="areaofspecialization" placeholder="Area of Specialization" value="">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="qualifications" class="col-sm-2 control-label">Qualifications</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" id="qualifications" name="qualifications" placeholder="Qualifications" value="">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="mailid" class="col-sm-2 control-label">Mail Id</label>
-                    <div class="col-sm-5">
-                        <input type="email" class="form-control" id="mailid" name="mailid" placeholder="Mail Id" value="">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="phoneno" class="col-sm-2 control-label">Phone no</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" id="phoneno" placeholder="Phone no" name="phoneno" value="">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="dateofbirth" class="col-sm-2 control-label">Date of Birth</label>
-                    <div class="col-sm-5">
-                        <input type="date" class="form-control" id="dateofbirth" name="dateofbirth" value="">
-                    </div>
-                </div>
-                <input type="hidden"  id="userid" name="userid" value="" />
-                <%if (request.getAttribute("status") != null) {%>
-                <input type="hidden" name="status" id="status" value="<%=(String) request.getAttribute("status")%>"/>
-                <%request.setAttribute("status", null);
-                } else {%>
-                <input type="hidden" name="status" id="status" />
-                <%}%>
-
+                </div> 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default" value="update" name="operation">Update</button>
+                        <button type="button" class="btn btn-default" name="operation" onclick="traineractivity(document.getElementById('trainername').value, document.getElementById('institution').value)">View</button>
                     </div>
                 </div>
             </form>
+            <div id="schedule">
+                <table class="table table-striped table-hover table-center1">
+                    <caption class="col-md-offset-4"><h2>Schedule Details</h2></caption>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Training Stream</th>
+                            <td>:</td>
+                            <td> <div id="trainingstream"></div></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Commencing Date</th>
+                            <td>:</td>
+                            <td>  <div id="commencingdate"></div></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Ending Date</th>
+                            <td>:</td>
+                            <td><div id="endingdate"></div></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">No Of Days</th>
+                            <td>:</td>
+                            <td>    <div id="noofdays"></div></td>
+                        </tr>
+                    </tbody>                     
+                </table>   
+            </div>
+            <div id="task">
+                <table class="table table-striped table-hover table-center1">
+                    <caption class="col-md-offset-4"><h2>Tasks</h2></caption>
+                    <thead>
+                    <th scope="norecords">Task</th>
+                    <th>Alloted date</th>
+                    </thead>
+                    <tbody id="tasklist">
+                    </tbody>
+                </table>
+            </div>
+            <div id="content" class="table-center1">
+
+            </div>
+            <div id="question" class="table-center1">
+            </div>
+            <div id="nodata">
+                <table class="table table-striped table-hover table-center1">
+                    <caption class="col-md-offset-4"><h2>Not Scheduled</h2></caption>
+                </table>
+            </div>
         </div>
     </body>
 </html>
+

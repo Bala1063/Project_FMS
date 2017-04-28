@@ -7,10 +7,12 @@ and open the template in the editor.
 -->
 <hibernate-mapping>
     <class name="ProjectFMS.Bean.QuestionBean" table="Question_tb">
-        <id name="questionId" type="int" column="Question_id">
+        <id name="questionId" type="string" column="Question_id">
             <generator class="assigned"/>
         </id>
         <property name="question" type="string" column="Question"/>
+        <property name="questionDate" type="date" column="Question_date"/>
+        <property name="trainingId" type="string" column="Training_id"/>
         <list name="answerBeans" cascade="save-update,delete,delete-orphan" lazy="false">
              <key column="Question_id" />
              <index column="type"/>

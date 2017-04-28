@@ -5,39 +5,45 @@
  */
 package ProjectFMS.Bean;
 
+import java.util.Date;
+
 /**
  *
  * @author PROJECT FMS
  */
 public class TaskBean {
-    private String trainerId;
+    private String trainingId;
     private String taskId;
     private String task;
     private String taskStatus;
+    private Date taskDate;
     
 
     public String getTaskStatus() {
         return taskStatus;
     }
 
+    public String getTrainingId() {
+        return trainingId;
+    }
+
+    public void setTrainingId(String trainingId) {
+        this.trainingId = trainingId;
+    }
+
     public void setTaskStatus(String taskStatus) {
         this.taskStatus = taskStatus;
     }
-    
-   
-
-    public String getTrainerId() {
-        return trainerId;
-    }
-
-    public void setTrainerId(String trainerId) {
-        this.trainerId = trainerId;
-    }
-
-  
-
-    public String getTaskId() {
+  public String getTaskId() {
         return taskId;
+    }
+
+    public Date getTaskDate() {
+        return taskDate;
+    }
+
+    public void setTaskDate(Date taskDate) {
+        this.taskDate = taskDate;
     }
 
     public void setTaskId(String taskId) {

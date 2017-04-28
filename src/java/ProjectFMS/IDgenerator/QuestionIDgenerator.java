@@ -6,6 +6,7 @@
 package ProjectFMS.IDgenerator;
 
 import ProjectFMS.Bean.ContentBean;
+import ProjectFMS.Bean.TrainingScheduleBean;
 import ProjectFMS.Util.DBUtil;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -18,14 +19,14 @@ import java.sql.Statement;
  */
 public class QuestionIDgenerator {
     
-     public String generateOrderId(ContentBean contentBean) {
+     public String generateQuestionId(TrainingScheduleBean trainingScheduleBean) {
         ResultSet resultSet = null;
         Statement statement = null;
 
         try {
             Connection con = DBUtil.getDBConnection();
             statement = con.createStatement();
-            String mid=contentBean.getContentId();
+            String mid=trainingScheduleBean.getTrainingId();
             String prefix = "QU_"+""+mid;
             int x = 0;
             try {

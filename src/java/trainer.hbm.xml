@@ -13,7 +13,7 @@ and open the template in the editor.
         <property name="trainerName" type="string" column="Trainer_name"/>
         <property name="areaOfSpecialization" type="string" column="Area_of_specialization"/>
         <property name="institution" type="string" column="Institution"/>
-        <property name="selfSkilling" type="string" column="Self_skilling"/>
+        
         <property name="qualifications" type="string" column="Qualifications"/>
         <property name="mailId" type="string" column="Mail_id"/>
         <property name="phoneNo" type="long" column="Phone_no"/>
@@ -30,13 +30,7 @@ and open the template in the editor.
             <index column="type"/>
             <one-to-many  class="ProjectFMS.Bean.TrainingScheduleBean" />
         </list>
-    
-    <list name="taskBeans" table="ProjectFMS.Bean.TaskBean" cascade="save-update,delete,delete-orphan" lazy="false">
-        <key column="Trainer_id"/>
-        <index column="type"/>
-        <one-to-many class="ProjectFMS.Bean.TaskBean" />
-    </list>
-    </class>
+        </class>
 </hibernate-mapping>
 
 

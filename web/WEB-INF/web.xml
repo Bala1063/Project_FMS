@@ -3,10 +3,17 @@
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>ProjectFMS.Servlet.LoginServlet</servlet-class>
+          <load-on-startup>0</load-on-startup> 
     </servlet>
     <servlet>
         <servlet-name>AdminTrainerServlet</servlet-name>
         <servlet-class>ProjectFMS.Servlet.AdminTrainerServlet</servlet-class>
+         <load-on-startup>1</load-on-startup> 
+    </servlet>
+    <servlet>
+        <servlet-name>TrainerServlet</servlet-name>
+        <servlet-class>ProjectFMS.Servlet.TrainerServlet</servlet-class>
+            <load-on-startup>2</load-on-startup> 
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -16,12 +23,17 @@
         <servlet-name>AdminTrainerServlet</servlet-name>
         <url-pattern>/AdminTrainerServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TrainerServlet</servlet-name>
+        <url-pattern>/TrainerServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             120
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>Login.html</welcome-file>
     </welcome-file-list>
+   
 </web-app>

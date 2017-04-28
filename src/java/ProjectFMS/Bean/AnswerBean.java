@@ -10,18 +10,29 @@ package ProjectFMS.Bean;
  * @author PROJECT FMS
  */
 public class AnswerBean {
-    private String id;
+    private int id;
     private String questionId;
     private String type;
     private String answer;
+    private String answerType;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public String getAnswerType() {
+        return answerType;
+    }
+
+    public void setAnswerType(String answerType) {
+        this.answerType = answerType;
+    }
+
+    public void setId(int id) {
         this.id = id;
     }
+
+    
 
     public String getQuestionId() {
         return questionId;

@@ -18,6 +18,7 @@
         <script src="js/bootstrap.min.js"></script>
         <title>Admin Set MWP</title>
         <script>
+            
             var req;
             function checkStatus()
             {
@@ -65,6 +66,31 @@
                 req.open("POST", url, true);
                 req.send(null);
             }
+             function getDetails(institution, trainername)
+            {   
+                req = get();
+                var url = "AdminTrainerServlet?operation=getDetails&&institution=" + institution + "&&trainername=" + trainername;
+                req.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+        
+                        var details = this.responseText.split(",");
+                        if (details.length > 1)
+                        {
+                            document.getElementById("minimumworkingperiod").value = details[details.length-1];
+                            
+                        }
+                        else
+                        {
+                              document.getElementById("minimumworkingperiod").value = "";
+                           
+                            
+                        }
+                    }
+                };
+                req.open("POST", url, true);
+                req.send(null);
+
+            }
         </script>
 
     </head>
@@ -72,18 +98,23 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand">Welcome Admin</a>
-                    <form class="nav navbar-nav right"  action="LoginServlet" method="post">
-                        <button type="submit"  value="logout" name="operation"  class="btn btn-default navbar-btn "><span><i class="glyphicon glyphicon-off"></i> </span>Logout</button>
-                    </form>
+                    <p class="navbar-brand">Welcome! Admin</p>
                 </div>
-
+                <ul class="nav navbar-nav navbar-center">
+                    <li><p class="navbar-brand">PRP_Faculty Management System</p></li>
+                </ul>
+                <form action="LoginServlet" method="post">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li> <button type="submit"  value="logout" name="operation"  class="btn btn-default navbar-btn "><span><i class="glyphicon glyphicon-off"></i> </span>Logout</button></li>
+                    </ul>
+                    
+                </form> 
             </div>
         </nav>
         <nav class="navbar navbar-inverse navbar-fixed-top down">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="AdminHomePage.html">Home</a>
+                   <a class="navbar-brand" href="AdminHomePage.jsp">Home</a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Trainer <span class="caret"></span></a>
@@ -94,25 +125,30 @@
                              <li><h6 class="dropdown-header">Minimum Working Period</h6></li>
                               <li><a href="AdminSetDMWP.jsp">Set Default Minimum Working Period</a></li>
                             <li><a href="AdminSetMWP.jsp">Update Individual Minimum Working Period</a></li>
-                            <li><a href="AdminAllocateTraining.html">Allocate Training</a></li>
+                      
                         </ul>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Training <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="AdminAddTraining.html">Add Training</a></li>
-                            <li><a href="AdminUpdateTraining.html">Update Training</a></li>
-                            <li><a href="AdminRemoveTraining.html">Remove Training</a></li>
-                            <li><h6 class="dropdown-header">Question</h6></li>
-                            <li><a href="AdminAddQuestion.html">Add Question</a></li>
-                            <li><a href="AdminUpdateQuestion.html">Update Question</a></li>
-                            <li><a href="AdminRemoveQuestion.html">Remove Question</a></li>
+                        <li><a href="AdminAllocateTraining.jsp">Allocate Training</a></li>
+                           <li><a href="AdminUpdateTraining.jsp">Update Training</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Daily Task <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="AdminAddTask.html">Add Task</a></li>
-                            <li><a href="AdminUpdateTask.html">Update Task</a></li>
-                            <li><a href="AdminRemoveTask.html">Remove Task</a></li>
+                              <li><a href="AdminAddTask.jsp">Add Task</a></li>
+                          
+                        </ul>
+                    </li>
+                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">View <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="AdminViewAllTrainers.jsp">All Trainers</a></li>
+                            <li><a href="AdminViewTrainerActivities.jsp">Trainer Activities</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Settings<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="AdminChangePassword.jsp">Change Password</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -132,7 +168,7 @@
                 <div class="form-group">
                     <label for="trainername" class="col-sm-2 control-label">Trainer Name</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" id="trainername" name="trainername" list="namelist" placeholder="Trainer Name" value="">
+                        <input type="text" class="form-control" id="trainername" name="trainername" list="namelist" placeholder="Trainer Name" value="" oninput="getDetails(document.getElementById('institution').value,this.value)">
                     </div>
                     <datalist id="namelist">
 

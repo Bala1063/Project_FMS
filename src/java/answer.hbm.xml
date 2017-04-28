@@ -10,7 +10,8 @@ and open the template in the editor.
         <id name="id" type="int" column="id">
             <generator class="increment"/>
         </id>
-        <property name="type" type="string" column="Type"/>
+           <property name="questionId" type="string" column="Question_id"/>
+        <property name="answerType" type="string" column="Answer_type"/>
         <property name="answer" type="string" column="Answer"/>
   
     </class>

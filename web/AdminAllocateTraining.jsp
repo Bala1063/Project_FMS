@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AdminAddTrainer
-    Created on : Apr 6, 2017, 10:15:14 PM
+    Document   : AdminAllocateTraining
+    Created on : Apr 8, 2017, 1:51:39 PM
     Author     : bala
 --%>
 
@@ -16,9 +16,10 @@
         <link href="css/admin.css" rel="stylesheet">
         <script src="jquery/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <title>Admin Add Trainer</title>
+        <title>Admin Allocate Training</title>
         <script>
             
+            var req;
             function checkStatus()
             {
                 var x = document.getElementById("status").value;
@@ -28,10 +29,47 @@
                     window.alert(x);
                 }
             }
+            function get()
+            {
+                if (window.XMLHttpRequest) {
+                    return  new XMLHttpRequest( );
+                } else if (window.ActiveXObject)
+                {
+                    return new ActiveXObject("Microsoft.XMLHTTP");
+                }
+            }
+            function institutionlist()
+            {
+                checkStatus();
+                req = get();
+                var url = "AdminTrainerServlet?operation=institutionlist";
+                req.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+
+                        document.getElementById("institutionlist").innerHTML =
+                                this.responseText;
+                    }
+                };
+                req.open("POST", url, true);
+                req.send(null);
+            }
+            function namelist(institution)
+            {
+                req = get();
+                var url = "AdminTrainerServlet?operation=namelist&&institution=" + institution;
+                req.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("namelist").innerHTML =
+                                this.responseText;
+                    }
+                };
+                req.open("POST", url, true);
+                req.send(null);
+            }
         </script>
     </head>
-    <body onload="checkStatus()">
-        <nav class="navbar navbar-default navbar-fixed-top">
+    <body onload="institutionlist()">
+       <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <p class="navbar-brand">Welcome! Admin</p>
@@ -50,7 +88,7 @@
         <nav class="navbar navbar-inverse navbar-fixed-top down">
             <div class="container-fluid">
                 <div class="navbar-header">
-                  <a class="navbar-brand" href="AdminHomePage.jsp">Home</a>
+                   <a class="navbar-brand" href="AdminHomePage.jsp">Home</a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Trainer <span class="caret"></span></a>
@@ -61,7 +99,6 @@
                             <li><h6 class="dropdown-header">Minimum Working Period</h6></li>
                             <li><a href="AdminSetDMWP.jsp">Set Default Minimum Working Period</a></li>
                             <li><a href="AdminSetMWP.jsp">Update Individual Minimum Working Period</a></li>
-
                         </ul>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Training <span class="caret"></span></a>
@@ -73,7 +110,7 @@
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Daily Task <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="AdminAddTask.jsp">Add Task</a></li>
-                                                    </ul>
+                        </ul>
                     </li>
                      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">View <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -86,52 +123,43 @@
                             <li><a href="AdminChangePassword.jsp">Change Password</a></li>
                         </ul>
                     </li>
-
                 </ul>
             </div>
         </nav>
-        <div class="container">
+        <div class="container ">
             <form class="form-horizontal center" action="AdminTrainerServlet" method="post">
+                <div class="form-group">
+                    <label for="institution"  class="col-sm-2 control-label">Institution</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="institution" list="institutionlist" placeholder="Select Institution" name="institution" oninput="namelist(this.value)">
+                    </div>
+                    <datalist id="institutionlist">
+                    </datalist>
+                </div>
                 <div class="form-group">
                     <label for="trainername" class="col-sm-2 control-label">Trainer Name</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" id="trainername" name="trainername" placeholder="Trainer Name" required>
+                        <input type="text" class="form-control" id="trainername" list="namelist" placeholder="Select Trainer Name" name="trainername">
+                    </div>
+                    <datalist id="namelist">
+                    </datalist>
+                </div>
+                <div class="form-group">
+                    <label for="trainingstream" class="col-sm-2 control-label">Training Stream</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="trainingstream" placeholder="Training Stream" name="trainingstream">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="areaofspecialization" class="col-sm-2 control-label">Area of Specialization</label>
+                    <label for="commencingdate"  class="col-sm-2 control-label">Commencing_Date</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" id="areaofspecialization" name="areaofspecialization" placeholder="Area of Specialization" required>
+                        <input type="date" class="form-control" id="commencingdate" name="commencingdate">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="institution" class="col-sm-2 control-label">Institution</label>
+                    <label for="endingdate" class="col-sm-2 control-label">Ending_Date</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" id="institution" name="institution" placeholder="Institution" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="qualifications" class="col-sm-2 control-label">Qualifications</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" id="qualifications" name="qualifications" placeholder="Qualifications" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="mailid" class="col-sm-2 control-label">Mail Id</label>
-                    <div class="col-sm-5">
-                        <input type="email" class="form-control" id="mailid" name="mailid" placeholder="Mail Id" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="phoneno" class="col-sm-2 control-label">Phone no</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" id="phoneno" name="phoneno" placeholder="Phone no" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="dateofbirth" class="col-sm-2 control-label">Date of Birth</label>
-                    <div class="col-sm-5">
-                        <input type="date" class="form-control" id="dateofbirth" name="dateofbirth"  required>
+                        <input type="date" class="form-control" id="endingdate" name="endingdate" >
                     </div>
                 </div>
                 <%if (request.getAttribute("status") != null) {%>
@@ -141,8 +169,8 @@
                 <input type="hidden" name="status" id="status" />
                 <%}%>
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit"  value="add"  class="btn btn-default" name="operation">Add</button>
+                    <div class="col-sm-offset-2 col-sm-10 ">
+                        <button type="submit" class="btn btn-default " name="operation" value="allocate">Allocate</button>
                     </div>
                 </div>
             </form>

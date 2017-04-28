@@ -6,14 +6,17 @@
 package ProjectFMS.DAO;
 
 import ProjectFMS.Bean.DefaultMWP;
+import ProjectFMS.Bean.LeaveBean;
 import ProjectFMS.Bean.MinimumWorkingPeriodBean;
-import ProjectFMS.Bean.ReportBean;
+
 import ProjectFMS.Bean.TrainerBean;
 import ProjectFMS.Bean.TrainingScheduleBean;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import ProjectFMS.Util.Util;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -25,35 +28,6 @@ import org.hibernate.Transaction;
  * @author PROJECT FMS
  */
 public class AdminDAO {
-
-    public String removeContentsByContentId(List<String> contentIds) {
-
-        Session session = Util.getSessionFactory().openSession();
-        for (int i = 0; i < contentIds.size(); i++) {
-            Query query = session.createQuery("delete from ContentBean where contentId=:contentId");
-            query.setParameter("contentId", contentIds.get(i));
-        }
-        session.close();
-        return "success";
-    }
-
-    public List<ReportBean> viewReportByTrainerId(String trainerId) {
-        Session session = Util.getSessionFactory().openSession();
-        Criteria criteria = session.createCriteria(ReportBean.class);
-        criteria.add(Restrictions.eq("trainerId", trainerId));
-        List<ReportBean> reportList = criteria.list();
-        session.close();
-        return reportList;
-    }
-
-    public List<ReportBean> viewAllReports() {
-        Session session = Util.getSessionFactory().openSession();
-        Query query = session.createQuery("From ReportBean");
-        List<ReportBean> reportBeans = query.list();
-        session.close();
-        return reportBeans;
-
-    }
 
     public String removeTrainingDetails(String trainingId) {
         Session session = Util.getSessionFactory().openSession();
@@ -69,7 +43,7 @@ public class AdminDAO {
         Transaction t = null;
         try {
             t = session.beginTransaction();
-            TrainerBean trainerBean=(TrainerBean)session.get(TrainerBean.class, trainerId);
+            TrainerBean trainerBean = (TrainerBean) session.get(TrainerBean.class, trainerId);
             session.delete(trainerBean);
             t.commit();
         } catch (HibernateException e) {
@@ -81,24 +55,24 @@ public class AdminDAO {
             session.close();
         }
         return "success";
-        }
-        
-    
+    }
 
     public TrainingScheduleBean viewTrainingScheduleByTrainerId(String trainerId) {
         Session session = Util.getSessionFactory().openSession();
+        Date date = new Date();
         Criteria criteria = session.createCriteria(TrainingScheduleBean.class);
-        criteria.add(Restrictions.eq("trainerId", trainerId));
+        criteria.add(Restrictions.ge("toDate", date));
         if (!criteria.list().isEmpty()) {
-            List<TrainingScheduleBean> trainingScheduleList = criteria.list();
-            Date date = new Date();
-            for (TrainingScheduleBean trainingScheduleBean : trainingScheduleList) {
-                if ((trainingScheduleBean.getFromDate().getMonth() >= date.getMonth()) && (trainingScheduleBean.getToDate().getMonth() <= date.getMonth())) {
+            System.out.println(criteria.list().size());
+            List<TrainingScheduleBean> trainingScheduleBeans = criteria.list();
+            session.close();
+            for (TrainingScheduleBean trainingScheduleBean : trainingScheduleBeans) {
+                if (trainerId.equalsIgnoreCase(trainingScheduleBean.getTrainerId())) {
                     return trainingScheduleBean;
                 }
             }
-            session.close();
         }
+        session.close();
         return null;
 
     }
@@ -122,57 +96,6 @@ public class AdminDAO {
 
     }
 
-    public List<TrainingScheduleBean> viewAllScheduleTraining() {
-        Session session = Util.getSessionFactory().openSession();
-        Query query = session.createSQLQuery("From TrainingScheduleBean");
-        List<TrainingScheduleBean> allTrainingScheduleList = query.list();
-        session.close();
-        return allTrainingScheduleList;
-    }
-
-    public List<TrainingScheduleBean> notifications() {
-        Session session = Util.getSessionFactory().openSession();
-        Query query = session.createQuery("From TrainingScheduleBean");
-        if (!query.list().isEmpty()) {
-            List<TrainingScheduleBean> trainingScheduleList = query.list();
-            Date date = new Date();
-            for (TrainingScheduleBean trainingScheduleBean : trainingScheduleList) {
-                long days = trainingScheduleBean.getToDate().getTime() - trainingScheduleBean.getFromDate().getTime();
-                long minimumWorkingPeroid = new CommonDAO().getMinimumWorkingPeroid(trainingScheduleBean.getTrainerId());
-                if (!(trainingScheduleBean.getFromDate().getMonth() >= date.getMonth()) && (trainingScheduleBean.getToDate().getMonth() <= date.getMonth()) && days > minimumWorkingPeroid) {
-                    trainingScheduleList.remove(trainingScheduleBean);
-                }
-            }
-            session.close();
-            return trainingScheduleList;
-
-        }
-        return null;
-    }
-
-    public String allocateTrainingList(List<String> trainerIdList, String trainingId, Date fromDate, Date toDate) {
-        for (int i = 0; i < trainerIdList.size(); i++) {
-            TrainingScheduleBean trainingScheduleBean = new TrainingScheduleBean();
-            trainingScheduleBean.setTrainerId(trainerIdList.get(i));
-            trainingScheduleBean.setTrainingId(trainingId);
-            trainingScheduleBean.setFromDate(fromDate);
-            trainingScheduleBean.setToDate(toDate);
-            new CommonDAO().addOrUpdateDetails(trainingScheduleBean);
-        }
-        return "success";
-    }
-
-    public String allocateTraining(String trainerId, String trainingId, Date fromDate, Date toDate) {
-
-        TrainingScheduleBean trainingScheduleBean = new TrainingScheduleBean();
-        trainingScheduleBean.setTrainerId(trainerId);
-        trainingScheduleBean.setTrainingId(trainingId);
-        trainingScheduleBean.setFromDate(fromDate);
-        trainingScheduleBean.setToDate(toDate);
-        new CommonDAO().addOrUpdateDetails(trainingScheduleBean);
-        return "success";
-    }
-
     public String allocateMinimumWorkingPeriodList(List<String> trainerIdList, int minimumWorkingPeriod) {
 
         for (int i = 0; i < trainerIdList.size(); i++) {
@@ -184,19 +107,69 @@ public class AdminDAO {
         return "success";
     }
 
-    public String allocateMinimumWorkingPeriod(String trainerId, int minimumWorkingPeriod) {
+    public DefaultMWP getDefaultMWP() {
+        Session session = Util.getSessionFactory().openSession();
+        DefaultMWP defaultMWP = (DefaultMWP) session.get(DefaultMWP.class, 1);
+        session.close();
+        return defaultMWP;
+    }
 
-        MinimumWorkingPeriodBean minimumWorkingPeriodBean = new MinimumWorkingPeriodBean();
-        minimumWorkingPeriodBean.setTrainerId(trainerId);
-        minimumWorkingPeriodBean.setMinimumWorkingPeriod(minimumWorkingPeriod);
-        new CommonDAO().addOrUpdateDetails(minimumWorkingPeriodBean);
-        return "success";
-    }
-    public DefaultMWP getDefaultMWP()
-    {
-         Session session = Util.getSessionFactory().openSession();
-            DefaultMWP defaultMWP = (DefaultMWP) session.get(DefaultMWP.class, 1);
+    public List<TrainerBean> getNonScheduleTrainers() {
+        Session session = Util.getSessionFactory().openSession();
+        Query query = session.createQuery("From TrainerBean");
+        if (!query.list().isEmpty()) {
+            List<TrainerBean> trainerBeans = query.list();
             session.close();
-            return defaultMWP;
+            Iterator<TrainerBean> i = trainerBeans.iterator();
+            while (i.hasNext()) {
+                TrainerBean trainerBean = (TrainerBean) i.next();
+                if (new TrainerDAO().getTrainingId(trainerBean.getTrainerId()) != null) {
+                    i.remove();
+                }
+            }
+            return trainerBeans;
+        }
+        session.close();
+        return null;
     }
+
+    public List<LeaveBean> getLeaveDetails() {
+        Session session = Util.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(LeaveBean.class);
+        Date date = new Date();
+        criteria.add(Restrictions.ge("toDate", date));
+        if (!criteria.list().isEmpty()) {
+            List<LeaveBean> leaveBeans = criteria.list();
+            session.close();
+
+            return leaveBeans;
+        }
+        return null;
     }
+
+    public List<TrainingScheduleBean> getIncorrectScheduleDetails() {
+        Session session = Util.getSessionFactory().openSession();
+        Query query = session.createQuery("From TrainerBean");
+        if (!query.list().isEmpty()) {
+            List<TrainerBean> trainerBeans = query.list();
+            List<TrainingScheduleBean> trainingScheduleBeans = new ArrayList<>();
+            session.close();
+            TrainerDAO trainerDAO = new TrainerDAO();
+            for (TrainerBean trainerBean : trainerBeans) {
+                String trainingId = trainerDAO.getTrainingId(trainerBean.getTrainerId());
+                if (trainingId != null) {
+                    TrainingScheduleBean trainingScheduleBean = trainerDAO.getTrainingSchedule(trainingId);
+                    if (trainingScheduleBean != null) {
+                        long x = (trainingScheduleBean.getToDate().getTime() - trainingScheduleBean.getFromDate().getTime()) / (1000 * 60 * 60 * 24);
+                        if (x < trainerBean.getMinimumWorkingPeriodBean().getMinimumWorkingPeriod()) {
+                            trainingScheduleBeans.add(trainingScheduleBean);
+                        }
+                    }
+                }
+            }
+            return trainingScheduleBeans;
+        }
+        session.close();
+        return null;
+    }
+}

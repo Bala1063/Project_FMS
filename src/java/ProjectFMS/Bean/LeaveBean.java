@@ -14,18 +14,29 @@ import java.util.Date;
  * @author PROJECT FMS
  */
 public class LeaveBean {
+    private int id;
     private String trainerId;
-    private Date leaveDate;
-    private TrainerBean trainerBean;
+    private Date fromDate;
+    private Date toDate;
+   private String purpose;
 
-    public TrainerBean getTrainerBean() {
-        return trainerBean;
+    public String getPurpose() {
+        return purpose;
     }
 
-    public void setTrainerBean(TrainerBean trainerBean) {
-        this.trainerBean = trainerBean;
+    public int getId() {
+        return id;
     }
-    
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setPurpose(String purpose) {
+        this.purpose = purpose;
+    }
+
+   
     public String getTrainerId() {
         return trainerId;
     }
@@ -34,12 +45,21 @@ public class LeaveBean {
         this.trainerId = trainerId;
     }
 
-    public Date getLeaveDate() {
-        return leaveDate;
+    public Date getFromDate() {
+        return fromDate;
     }
 
-    public void setLeaveDate(Date leaveDate) {
-        this.leaveDate = leaveDate;
+    public void setFromDate(Date fromDate) {
+        this.fromDate = fromDate;
     }
-    
+
+    public Date getToDate() {
+        return toDate;
+    }
+
+    public void setToDate(Date toDate) {
+        this.toDate = toDate;
+    }
+
+   
 }

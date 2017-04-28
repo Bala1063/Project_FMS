@@ -7,13 +7,13 @@ and open the template in the editor.
 -->
 <hibernate-mapping>
     <class name="ProjectFMS.Bean.LeaveBean" table="Leave_tb">
-         <id name="trainerId" column="Trainer_id">
-            <generator class="foreign">
-                <param name="property">trainerBean</param>
-            </generator>
+        <id name="id" column="Id" type="int">
+            <generator class="increment"/>
         </id>
-        <property name="leaveDate" type="date" column="Leave_date"/>
-        <one-to-one name="trainerBean" ></one-to-one>
-    
+          <property name="trainerId" type="string" column="Trainer_id"/>
+        <property name="fromDate" type="date" column="From_date"/>
+          <property name="toDate" type="date" column="To_date"/>
+        <property name="purpose" type="string" column="Purpose"/>
+       
     </class>
 </hibernate-mapping>

@@ -8,14 +8,12 @@ and open the template in the editor.
 <hibernate-mapping>
     <class name="ProjectFMS.Bean.ContentBean" table="Content_tb">
         <id name="contentId" type="string" column="Content_id">
-            <generator class="assigned"/>
+            <generator class="ProjectFMS.IDgenerator.ContentIDgenerator"/>
         </id>
-        <property name="content" type="string" column="Content"/>
-        <list name="questionBeans" cascade="save-update,delete,delete-orphan" lazy="false">
-            <key column="Content_id" />
-            <index column="type"/>
-            <one-to-many class="ProjectFMS.Bean.QuestionBean"/>
-        </list>
+        <property name="contentName" type="string" column="Content_name"/>
+        <property name="contentDate" type="date" column="Content_date"/>
+        <property name="trainingId" type="string" column="Training_id"/>
+       <property name="contentDescription" type="string" column="Content_description"/>
         </class>
 </hibernate-mapping>
 

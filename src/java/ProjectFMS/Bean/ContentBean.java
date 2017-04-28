@@ -5,30 +5,49 @@
  */
 package ProjectFMS.Bean;
 
-import java.util.List;
+import java.util.Date;
+
+
 
 /**
  *
  * @author PROJECT FMS
  */
 public class ContentBean {
-    private String trainingId;
+
+   
     private String contentId;
-    private String content;
-    private List<QuestionBean> questionBeans;
+    private String contentName;
+    private String trainingId;
+    private Date contentDate;
+    private String contentDescription;
 
-    public List<QuestionBean> getQuestionBeans() {
-        return questionBeans;
+    public String getContentName() {
+        return contentName;
     }
 
-    public void setQuestionBeans(List<QuestionBean> questionBeans) {
-        this.questionBeans = questionBeans;
+    public void setContentName(String contentName) {
+        this.contentName = contentName;
     }
 
-  
+    public String getContentDescription() {
+        return contentDescription;
+    }
+
+    public void setContentDescription(String contentDescription) {
+        this.contentDescription = contentDescription;
+    }
 
     public String getTrainingId() {
         return trainingId;
+    }
+
+    public Date getContentDate() {
+        return contentDate;
+    }
+
+    public void setContentDate(Date contentDate) {
+        this.contentDate = contentDate;
     }
 
     public void setTrainingId(String trainingId) {
@@ -43,12 +62,4 @@ public class ContentBean {
         this.contentId = contentId;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-    
 }

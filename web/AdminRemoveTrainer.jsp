@@ -18,6 +18,7 @@
         <script src="js/bootstrap.min.js"></script>
         <title>Admin Remove Trainer</title>
         <script>
+            
             var req;
             function checkStatus()
             {
@@ -38,13 +39,13 @@
                 }
             }
             function institutionlist()
-                        {
+            {
                 checkStatus();
                 req = get();
                 var url = "AdminTrainerServlet?operation=institutionlist";
                 req.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
-                       document.getElementById("institutionlist").innerHTML =
+                        document.getElementById("institutionlist").innerHTML =
                                 this.responseText;
                     }
                 };
@@ -72,47 +73,56 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand">Welcome Admin</a>
-                    <form class="nav navbar-nav right"  action="LoginServlet" method="post">
-                        <button type="submit"  value="logout" name="operation"  class="btn btn-default navbar-btn "><span><i class="glyphicon glyphicon-off"></i> </span>Logout</button>
-                    </form>
+                    <p class="navbar-brand">Welcome! Admin</p>
                 </div>
-
+                <ul class="nav navbar-nav navbar-center">
+                    <li><p class="navbar-brand">PRP_Faculty Management System</p></li>
+                </ul>
+                <form action="LoginServlet" method="post">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li> <button type="submit"  value="logout" name="operation"  class="btn btn-default navbar-btn "><span><i class="glyphicon glyphicon-off"></i> </span>Logout</button></li>
+                    </ul>
+                    
+                </form> 
             </div>
         </nav>
         <nav class="navbar navbar-inverse navbar-fixed-top down">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="AdminHomePage.html">Home</a>
+                   <a class="navbar-brand" href="AdminHomePage.jsp">Home</a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Trainer <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                           <li><a href="AdminAddTrainer.jsp">Add Trainer</a></li>
+                            <li><a href="AdminAddTrainer.jsp">Add Trainer</a></li>
                             <li><a href="AdminUpdateTrainer.jsp">Update Trainer</a></li>
                             <li><a href="AdminRemoveTrainer.jsp">Remove Trainer</a></li>
-                             <li><h6 class="dropdown-header">Minimum Working Period</h6></li>
-                              <li><a href="AdminSetDMWP.jsp">Set Default Minimum Working Period</a></li>
+                            <li><h6 class="dropdown-header">Minimum Working Period</h6></li>
+                            <li><a href="AdminSetDMWP.jsp">Set Default Minimum Working Period</a></li>
                             <li><a href="AdminSetMWP.jsp">Update Individual Minimum Working Period</a></li>
-                            <li><a href="AdminAllocateTraining.html">Allocate Training</a></li>
+
                         </ul>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Training <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="AdminAddTraining.html">Add Training</a></li>
-                            <li><a href="AdminUpdateTraining.html">Update Training</a></li>
-                            <li><a href="AdminRemoveTraining.html">Remove Training</a></li>
-                            <li><h6 class="dropdown-header">Question</h6></li>
-                            <li><a href="AdminAddQuestion.html">Add Question</a></li>
-                            <li><a href="AdminUpdateQuestion.html">Update Question</a></li>
-                            <li><a href="AdminRemoveQuestion.html">Remove Question</a></li>
+                            <li><a href="AdminAllocateTraining.jsp">Allocate Training</a></li>
+                               <li><a href="AdminUpdateTraining.jsp">Update Training</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Daily Task <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="AdminAddTask.html">Add Task</a></li>
-                            <li><a href="AdminUpdateTask.html">Update Task</a></li>
-                            <li><a href="AdminRemoveTask.html">Remove Task</a></li>
+                            <li><a href="AdminAddTask.jsp">Add Task</a></li>
+                        </ul>
+                    </li>
+                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">View <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="AdminViewAllTrainers.jsp">All Trainers</a></li>
+                            <li><a href="AdminViewTrainerActivities.jsp">Trainer Activities</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Settings<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="AdminChangePassword.jsp">Change Password</a></li>
                         </ul>
                     </li>
 
@@ -127,7 +137,7 @@
                         <input type="text" class="form-control" id="institution" list="institutionlist" name="institution" placeholder="Institution" oninput="namelist(this.value)" value="">
                     </div>
                     <datalist id="institutionlist">
-                        
+
                     </datalist>
                 </div>
                 <div class="form-group">
@@ -135,11 +145,11 @@
                     <div class="col-sm-5">
                         <input type="text" class="form-control" id="trainername" name="trainername" list="namelist" placeholder="Trainer Name" value="">
                     </div>
-                     <datalist id="namelist">
-                        
+                    <datalist id="namelist">
+
                     </datalist>
                 </div>
-                 <%if (request.getAttribute("status") != null) {%>
+                <%if (request.getAttribute("status") != null) {%>
                 <input type="hidden" name="status" id="status" value="<%=(String) request.getAttribute("status")%>"/>
                 <%request.setAttribute("status", null);
                 } else {%>

@@ -17,7 +17,6 @@ public class TrainerBean {
     private String trainerName;
     private String areaOfSpecialization;
     private String institution;
-    private String selfSkilling;
     private String qualifications;
     private String mailId;
     private long phoneNo;
@@ -25,7 +24,7 @@ public class TrainerBean {
     private MinimumWorkingPeriodBean minimumWorkingPeriodBean;
     private List<LeaveBean> leaveBeans;
     private List<TrainingScheduleBean> trainingScheduleBeans;
-    private List<TaskBean> taskBeans;
+ 
 
     public MinimumWorkingPeriodBean getMinimumWorkingPeriodBean() {
         return minimumWorkingPeriodBean;
@@ -54,20 +53,10 @@ public class TrainerBean {
 
     @Override
     public String toString() {
-        return  trainerId + "," + trainerName + "," + areaOfSpecialization + "," + institution + "," + selfSkilling + "," + qualifications + "," + mailId + "," + phoneNo + "," + dateOfBirth+"," +getMinimumWorkingPeriodBean().getMinimumWorkingPeriod();
+        return  trainerId + "," + trainerName + "," + areaOfSpecialization + "," + institution + "," + qualifications + "," + mailId + "," + phoneNo + "," + dateOfBirth+"," +getMinimumWorkingPeriodBean().getMinimumWorkingPeriod();
     }
 
-    public List<TaskBean> getTaskBeans() {
-        return taskBeans;
-    }
-
-    public void setTaskBeans(List<TaskBean> taskBeans) {
-        this.taskBeans = taskBeans;
-    }
-
-   
-       
-    
+     
 
     public String getTrainerId() {
         return trainerId;
@@ -101,13 +90,7 @@ public class TrainerBean {
         this.institution = institution;
     }
 
-    public String getSelfSkilling() {
-        return selfSkilling;
-    }
-
-    public void setSelfSkilling(String selfSkilling) {
-        this.selfSkilling = selfSkilling;
-    }
+   
 
     public String getQualifications() {
         return qualifications;

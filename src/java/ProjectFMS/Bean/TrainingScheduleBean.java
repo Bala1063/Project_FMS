@@ -6,28 +6,59 @@
 package ProjectFMS.Bean;
 
 import java.util.Date;
-
-
+import java.util.List;
 
 /**
  *
  * @author PROJECT FMS
  */
 public class TrainingScheduleBean {
-    private int id;
-    private String trainerId;
+
     private String trainingId;
+    private String trainerId;
     private Date fromDate;
     private Date toDate;
+    private String trainingStream;
+    private List<ContentBean> contentBeans;
+    private List<QuestionBean> questionBeans;
+    private List<TaskBean> taskBeans;
 
-    public int getId() {
-        return id;
+    public List<TaskBean> getTaskBeans() {
+        return taskBeans;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    @Override
+    public String toString() {
+        return  trainingId + "," + trainerId + "," + fromDate + "," + toDate + "," + trainingStream;
     }
-    
+
+    public void setTaskBeans(List<TaskBean> taskBeans) {
+        this.taskBeans = taskBeans;
+    }
+
+    public List<ContentBean> getContentBeans() {
+        return contentBeans;
+    }
+
+    public void setContentBeans(List<ContentBean> contentBeans) {
+        this.contentBeans = contentBeans;
+    }
+
+    public String getTrainingStream() {
+        return trainingStream;
+    }
+
+    public void setTrainingStream(String trainingStream) {
+        this.trainingStream = trainingStream;
+    }
+
+    public List<QuestionBean> getQuestionBeans() {
+        return questionBeans;
+    }
+
+    public void setQuestionBeans(List<QuestionBean> questionBeans) {
+        this.questionBeans = questionBeans;
+    }
 
     public String getTrainerId() {
         return trainerId;
@@ -60,5 +91,5 @@ public class TrainingScheduleBean {
     public void setToDate(Date toDate) {
         this.toDate = toDate;
     }
-    
+
 }

@@ -12,43 +12,38 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-
                     <ul class="nav navbar-nav navbar-center">
                         <li class="navbar-brand">PRP Faculty Management System</li>
                     </ul>
-
                 </div> 
-
             </div>
         </nav>
-
         <div class="container">
             <div class="row">
                 <div class="Absolute-Center is-Responsive">
-
                     <div id="logo-container">
                     </div>
                     <form action="LoginServlet" method="post">
-                        <div class="panel-default">
-                          
-                                
-                                <div class="panel panel-body panel-align">
-                                    <h4 class="title-align">PRP_FMS</h4>
-                                    <div class="form-group input-group space">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
-                                        <input class="col form-control" type="text" name='username' placeholder="username"/>
-                                    </div>
-                                    <div class="form-group input-group space">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> 
-                                        <input class="form-control" type="password" name='password' placeholder="password"/>
-                                    </div>   
-                                    <div class="form-group">
-                                        <button type="submit" value="login" name="operation" class="btn btn-def btn-block"> Login
-                                        </button>
-                                    </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><div class="col-sm-offset-3"><h3>PRP_FMS</h3></div></div>
+                            <div class="panel-body">
+                                <div class="form-group input-group space">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
+                                    <input class="col form-control" type="text" name='username' placeholder="username"/>
+                                </div>
+                                <div class="form-group input-group space">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> 
+                                    <input class="form-control" type="password" name='password' placeholder="password"/>
+                                </div>   
+                                <div class="form-group space">
+                                    <button type="submit" value="login" name="operation" class="btn btn-def btn-block"> Login
+                                    </button>
+                                </div>
+                                <div class="form-group col-sm-offset-4">
+                                    <a href="ForgetPassword.jsp">Forget Password?</a>
                                 </div>
                             </div>
-                     
+                        </div>
                     </form>
                 </div>
             </div>

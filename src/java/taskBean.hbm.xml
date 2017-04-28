@@ -10,8 +10,9 @@ and open the template in the editor.
     <id column="Task_id" name="taskId" type="string">
       <generator class="ProjectFMS.IDgenerator.TaskIDgenerator"/>
     </id>
-    <property column="Trainer_id" name="trainerId" type="string"/>
-    <property column="Task" name="task" type="string"/>
+     <property column="Training_id" name="trainingId" type="string"/>
+        <property column="Task" name="task" type="string"/>
+        <property column="Task_date" name="taskDate" type="date"/>
       <property column="Task_Status" name="taskStatus" type="string"/>
     </class>
 </hibernate-mapping>

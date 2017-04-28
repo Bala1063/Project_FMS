@@ -1,12 +1,20 @@
 .navbar-center{
-	margin-left: 400px;
+    margin-left: 400px;
 }
 
+.table-center
+{ margin-top: 150px;
+  margin-left: 50px;
+}
+.table-center1
+{ margin-top: 10px;
+  margin-left: 50px;
+}
+.center{
+    margin-top: 150px;
+    margin-left:300px;
+}
 
-
-
-
-
-
-
-
+.down{
+    margin-top: 50px;
+}
