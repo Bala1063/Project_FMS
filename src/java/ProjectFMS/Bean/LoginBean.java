@@ -10,9 +10,11 @@ import java.util.Date;
 
 /**
  *
- * @author PROJECT FMS
+ * PRP_FMS:
+ * @author Balaji S K.
  */
 public class LoginBean {
+
     private String userId;
     private String password;
     private String type;
@@ -44,8 +46,6 @@ public class LoginBean {
         this.type = type;
     }
 
-   
-
     public Date getInTime() {
         return inTime;
     }
@@ -62,8 +62,6 @@ public class LoginBean {
         this.outTime = outTime;
     }
 
-
-
     public void setOutTime(Time outTime) {
         this.outTime = outTime;
     }
@@ -75,6 +73,5 @@ public class LoginBean {
     public void setStatus(String status) {
         this.status = status;
     }
-    
-    
+
 }

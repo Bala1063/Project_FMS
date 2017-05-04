@@ -16,11 +16,13 @@
         <link href="css/admin.css" rel="stylesheet">
         <script src="jquery/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/custom.js"></script>
         <title>Admin Add Task</title>
         <script>
-            
+            var req;
             function checkStatus()
             {
+                checksession();
                 var x = document.getElementById("status").value;
                 if (x != "")
                 {
@@ -66,7 +68,7 @@
             }
         </script>
     </head>
-    <body onload="institutionlist()">
+    <body onload="institutionlist()" id="hidebody">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -79,7 +81,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li> <button type="submit"  value="logout" name="operation"  class="btn btn-default navbar-btn "><span><i class="glyphicon glyphicon-off"></i> </span>Logout</button></li>
                     </ul>
-                    
+
                 </form> 
             </div>
         </nav>
@@ -95,8 +97,8 @@
                             <li><a href="AdminUpdateTrainer.jsp">Update Trainer</a></li>
                             <li><a href="AdminRemoveTrainer.jsp">Remove Trainer</a></li>
                             <li><h6 class="dropdown-header">Minimum Working Period</h6></li>
-                            <li><a href="AdminSetDMWP.jsp">Set Default Minimum Working Period</a></li>
-                            <li><a href="AdminSetMWP.jsp">Update Individual Minimum Working Period</a></li>
+                            <li><a href="AdminSetDMWP.jsp">Default Min Working Period</a></li>
+                            <li><a href="AdminSetMWP.jsp">Individual Min Working Period</a></li>
 
                         </ul>
                     </li>
@@ -131,7 +133,7 @@
                 <div class="form-group">
                     <label for="institution" class="col-sm-2 control-label">Institution</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" id="institution" name="institution" list="institutionlist" placeholder="Institution" oninput="namelist(this.value)" value="">
+                        <input type="text" class="form-control" id="institution" name="institution" list="institutionlist" placeholder="Institution" oninput="namelist(this.value)" value="" required>
                     </div>
                     <datalist id="institutionlist">
 
@@ -140,7 +142,7 @@
                 <div class="form-group">
                     <label for="trainername" class="col-sm-2 control-label">Trainer Name</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" id="trainername" list="namelist" name="trainername" placeholder="Trainer Name" value="">
+                        <input type="text" class="form-control" id="trainername" list="namelist" name="trainername" placeholder="Trainer Name" value="" required>
                     </div>
                     <datalist id="namelist">
 
@@ -162,7 +164,7 @@
                 <div class="form-group">
                     <label for="taskdate" class="col-sm-2 control-label">Task Date</label>
                     <div class="col-sm-5">
-                        <input type="date" class="form-control"  name="taskdate" id="taskdate" value="">
+                        <input type="date" class="form-control"  name="taskdate" id="taskdate" value="" required>
                     </div>
                 </div>
                 <%if (request.getAttribute("status") != null) {%>
@@ -178,7 +180,6 @@
                 </div>
             </form>
         </div>
-
     </body>
 </html>
 

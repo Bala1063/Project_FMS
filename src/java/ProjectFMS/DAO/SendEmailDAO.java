@@ -16,8 +16,15 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class SendEmailDAO {
+/**
+ *
+ * PRP_FMS:
+ *
+ * @author Balaji S K.
+ */
 
+public class SendEmailDAO {
+//Sends messages to the users mail id.
     public String sendmail(String tomailid, String msg) {
         String to = tomailid;
         String from = "wipropmoteam@gmail.com";

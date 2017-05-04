@@ -25,8 +25,9 @@
         <link href="css/trainer.css" rel="stylesheet">
         <script src="jquery/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+     <script src="js/custom.js"></script>
     </head>
-    <body>
+    <body onload="checksession()" id="hidebody">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -69,8 +70,12 @@
         </nav>
         <div class="container">
 
-            <% AdminDAO adminDAO=new AdminDAO();
-                TrainingScheduleBean trainingScheduleBean =adminDAO.viewTrainingScheduleByTrainerId((String)request.getSession(false).getAttribute("userId")) ;
+            <% AdminDAO adminDAO = new AdminDAO();
+                TrainingScheduleBean trainingScheduleBean = null;
+                String userId = (String) request.getSession(false).getAttribute("userId");
+                if (userId != null) {
+                    trainingScheduleBean = adminDAO.viewTrainingScheduleByTrainerId(userId);
+                }
             %>
             <% if (trainingScheduleBean != null) {%>
 
@@ -125,7 +130,7 @@
             <%}%>
             <%} else {%>
             <table class="table table-striped table-hover table-center">
-                <caption class="col-md-offset-4"><h2>Server Problem</h2></caption>
+                <caption class="col-md-offset-4"><h2>No Schedule</h2></caption>
             </table>
             <%}%>
         </div>

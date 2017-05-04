@@ -7,9 +7,11 @@ package ProjectFMS.Bean;
 
 /**
  *
- * @author PROJECT FMS
+ * PRP_FMS:
+ * @author Balaji S K.
  */
 public class MinimumWorkingPeriodBean {
+
     private String trainerId;
     private int minimumWorkingPeriod;
     private TrainerBean trainerBean;
@@ -37,5 +39,5 @@ public class MinimumWorkingPeriodBean {
     public void setMinimumWorkingPeriod(int minimumWorkingPeriod) {
         this.minimumWorkingPeriod = minimumWorkingPeriod;
     }
-    
+
 }

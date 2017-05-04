@@ -7,18 +7,18 @@ package ProjectFMS.Bean;
 
 import java.util.Date;
 
-
-
 /**
  *
- * @author PROJECT FMS
+ * PRP_FMS:
+ * @author Aswini A.
  */
 public class LeaveBean {
+
     private int id;
     private String trainerId;
     private Date fromDate;
     private Date toDate;
-   private String purpose;
+    private String purpose;
 
     public String getPurpose() {
         return purpose;
@@ -36,7 +36,6 @@ public class LeaveBean {
         this.purpose = purpose;
     }
 
-   
     public String getTrainerId() {
         return trainerId;
     }
@@ -61,5 +60,4 @@ public class LeaveBean {
         this.toDate = toDate;
     }
 
-   
 }

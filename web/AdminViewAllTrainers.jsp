@@ -16,24 +16,11 @@
         <link href="css/admin.css" rel="stylesheet">
         <script src="jquery/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/custom.js"></script>
         <title>Admin Home Page</title>
         <script>
-
             var req;
-            function institutionlist()
-            {
-                document.getElementById('hidediv').style.display = "none";
-                req = get();
-                var url = "AdminTrainerServlet?operation=institutionlist";
-                req.onreadystatechange = function () {
-                    if (this.readyState == 4 && this.status == 200) {
-                                                document.getElementById("institutionlist").innerHTML ="<option>All</option>"+this.responseText;
-                                                
-                    }
-                };
-                req.open("POST", url, true);
-                req.send(null);
-            }
+            
             function get()
             {
                 if (window.XMLHttpRequest) {
@@ -43,9 +30,23 @@
                     return new ActiveXObject("Microsoft.XMLHTTP");
                 }
             }
+            function institutionlist()
+            { document.getElementById('hidediv').style.display = "none";
+               checksession();
+                req = get();
+                var url = "AdminTrainerServlet?operation=institutionlist";
+                req.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        alert();
+                        document.getElementById("institutionlist").innerHTML ="<option>ALL</option>"+this.responseText;
+                    }
+                };
+                req.open("POST", url, true);
+                req.send(null);
+            }
             function trainingDetails(institution)
-            {
-                    document.getElementById("details").innerHTML ="";
+            { document.getElementById('hidediv').style.display = "none";
+                document.getElementById("details").innerHTML = "";
                 req = get();
                 var url = "AdminTrainerServlet?operation=trainingDetails&&institution=" + institution;
                 req.onreadystatechange = function () {
@@ -60,7 +61,7 @@
             }
         </script>
     </head>
-    <body onload="institutionlist()">
+    <body onload="institutionlist()" id="hidebody">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -89,8 +90,8 @@
                             <li><a href="AdminUpdateTrainer.jsp">Update Trainer</a></li>
                             <li><a href="AdminRemoveTrainer.jsp">Remove Trainer</a></li>
                             <li><h6 class="dropdown-header">Minimum Working Period</h6></li>
-                            <li><a href="AdminSetDMWP.jsp">Set Default Minimum Working Period</a></li>
-                            <li><a href="AdminSetMWP.jsp">Update Individual Minimum Working Period</a></li>
+                            <li><a href="AdminSetDMWP.jsp">Default Min Working Period</a></li>
+                            <li><a href="AdminSetMWP.jsp">Individual Min Working Period</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Training <span class="caret"></span></a>

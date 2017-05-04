@@ -16,12 +16,13 @@
         <link href="css/admin.css" rel="stylesheet">
         <script src="jquery/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/custom.js"></script>
         <title>Admin Allocate Training</title>
         <script>
-            
             var req;
             function checkStatus()
             {
+                checksession();
                 var x = document.getElementById("status").value;
                 if (x != "")
                 {
@@ -45,7 +46,6 @@
                 var url = "AdminTrainerServlet?operation=institutionlist";
                 req.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
-
                         document.getElementById("institutionlist").innerHTML =
                                 this.responseText;
                     }
@@ -66,6 +66,7 @@
                 req.open("POST", url, true);
                 req.send(null);
             }
+
             function getScheduleDetails(trainername, institution)
             {
 
@@ -95,7 +96,7 @@
         </script>
 
     </head>
-    <body onload="institutionlist()">
+    <body onload="institutionlist()" id="hidebody">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -108,7 +109,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li> <button type="submit"  value="logout" name="operation"  class="btn btn-default navbar-btn "><span><i class="glyphicon glyphicon-off"></i> </span>Logout</button></li>
                     </ul>
-                    
+
                 </form> 
             </div>
         </nav>
@@ -124,9 +125,8 @@
                             <li><a href="AdminUpdateTrainer.jsp">Update Trainer</a></li>
                             <li><a href="AdminRemoveTrainer.jsp">Remove Trainer</a></li>
                             <li><h6 class="dropdown-header">Minimum Working Period</h6></li>
-                            <li><a href="AdminSetDMWP.jsp">Set Default Minimum Working Period</a></li>
-                            <li><a href="AdminSetMWP.jsp">Update Individual Minimum Working Period</a></li>
-
+                            <li><a href="AdminSetDMWP.jsp">Default Min Working Period</a></li>
+                            <li><a href="AdminSetMWP.jsp">Individual Min Working Period</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Training <span class="caret"></span></a>

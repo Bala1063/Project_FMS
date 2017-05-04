@@ -10,7 +10,8 @@ import java.util.List;
 
 /**
  *
- * @author PROJECT FMS
+ * PRP_FMS:
+ * @author Aruna A,Aswini A,Balaji S K,Sushmitha S.
  */
 public class TrainingScheduleBean {
 
@@ -29,7 +30,7 @@ public class TrainingScheduleBean {
 
     @Override
     public String toString() {
-        return  trainingId + "," + trainerId + "," + fromDate + "," + toDate + "," + trainingStream;
+        return trainingId + "," + trainerId + "," + fromDate + "," + toDate + "," + trainingStream;
     }
 
     public void setTaskBeans(List<TaskBean> taskBeans) {

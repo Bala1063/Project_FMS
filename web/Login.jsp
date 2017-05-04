@@ -1,3 +1,10 @@
+<%-- 
+    Document   : Login.jsp
+    Created on : May 2, 2017, 11:37:39 AM
+    Author     : bala
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,8 +14,19 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/Login.css">
         <script src="js/bootstrap.min.js"></script>
+        <script>
+            function checkStatus()
+            {
+                var x = document.getElementById("status").value;
+                if (x != "")
+                {
+                    document.getElementById("status").value = "";
+                    window.alert(x);
+                }
+            }
+        </script>
     </head>
-    <body class="bg-color">
+    <body class="bg-color" onload="checkStatus()">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -35,10 +53,17 @@
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> 
                                     <input class="form-control" type="password" name='password' placeholder="password"/>
                                 </div>   
+                                <%if (request.getAttribute("status") != null) {%>
+                                <input type="hidden" name="status" id="status" value="<%=(String) request.getAttribute("status")%>"/>
+                                <%request.setAttribute("status", null);
+                                } else {%>
+                                <input type="hidden" name="status" id="status" />
+                                <%}%>
                                 <div class="form-group space">
                                     <button type="submit" value="login" name="operation" class="btn btn-def btn-block"> Login
                                     </button>
                                 </div>
+
                                 <div class="form-group col-sm-offset-4">
                                     <a href="ForgetPassword.jsp">Forget Password?</a>
                                 </div>

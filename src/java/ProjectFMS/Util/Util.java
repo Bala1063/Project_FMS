@@ -10,7 +10,9 @@ import org.hibernate.cfg.Configuration;
 
 /**
  *
- * @author PROJECT FMS
+ * PRP_FMS:
+ *
+ * @author Aswini A,Balaji S K.
  */
 public class Util {
         private static final SessionFactory sessionFactory;

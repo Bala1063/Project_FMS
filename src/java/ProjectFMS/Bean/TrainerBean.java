@@ -10,9 +10,11 @@ import java.util.List;
 
 /**
  *
- * @author PROJECT FMS
+ * PRP_FMS:
+ * @author Aruna A,Aswini A,Balaji S K,Sushmitha S.
  */
 public class TrainerBean {
+
     private String trainerId;
     private String trainerName;
     private String areaOfSpecialization;
@@ -24,7 +26,6 @@ public class TrainerBean {
     private MinimumWorkingPeriodBean minimumWorkingPeriodBean;
     private List<LeaveBean> leaveBeans;
     private List<TrainingScheduleBean> trainingScheduleBeans;
- 
 
     public MinimumWorkingPeriodBean getMinimumWorkingPeriodBean() {
         return minimumWorkingPeriodBean;
@@ -42,7 +43,6 @@ public class TrainerBean {
         this.leaveBeans = leaveBeans;
     }
 
-    
     public List<TrainingScheduleBean> getTrainingScheduleBeans() {
         return trainingScheduleBeans;
     }
@@ -53,10 +53,8 @@ public class TrainerBean {
 
     @Override
     public String toString() {
-        return  trainerId + "," + trainerName + "," + areaOfSpecialization + "," + institution + "," + qualifications + "," + mailId + "," + phoneNo + "," + dateOfBirth+"," +getMinimumWorkingPeriodBean().getMinimumWorkingPeriod();
+        return trainerId + "," + trainerName + "," + areaOfSpecialization + "," + institution + "," + qualifications + "," + mailId + "," + phoneNo + "," + dateOfBirth + "," + getMinimumWorkingPeriodBean().getMinimumWorkingPeriod();
     }
-
-     
 
     public String getTrainerId() {
         return trainerId;
@@ -90,8 +88,6 @@ public class TrainerBean {
         this.institution = institution;
     }
 
-   
-
     public String getQualifications() {
         return qualifications;
     }
@@ -123,5 +119,5 @@ public class TrainerBean {
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-    
+
 }

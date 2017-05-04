@@ -20,17 +20,19 @@ import org.hibernate.criterion.Restrictions;
 
 /**
  *
- * @author bala
+ * PRP_FMS:
+ *
+ * @author Sushmitha S.
  */
 public class TrainerDAO {
-
+//Retrieves Trainer Detail using User Id.
     public TrainerBean viewTrainerDetails(String userId) {
         Session session = Util.getSessionFactory().openSession();
         TrainerBean trainerBean = (TrainerBean) session.get(TrainerBean.class, userId);
         session.close();
         return trainerBean;
     }
-
+//Retrieves Trainer Id using trainer name and institution.
     public String getTrainerId(String trainerName, String institution) {
         Session session = Util.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(TrainerBean.class);
@@ -44,7 +46,7 @@ public class TrainerDAO {
         session.close();
         return null;
     }
-
+//Retrieves list of Trainer Details.
     public List<TrainerBean> viewAllTrainer() {
         Session session = Util.getSessionFactory().openSession();
         Query query = session.createQuery("From TrainerBean");
@@ -52,7 +54,7 @@ public class TrainerDAO {
         session.close();
         return trainerBeans;
     }
-
+//Retrieves all Trainer details by institution.
     public List<TrainerBean> viewAllTrainerByInstitution(String institution) {
         Session session = Util.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(TrainerBean.class);
@@ -62,7 +64,7 @@ public class TrainerDAO {
         return trainerBeans;
 
     }
-
+// Returns Training Id using Trainer Id.
     public String getTrainingId(String trainerId) {
         Session session = Util.getSessionFactory().openSession();
         Date date = new Date();
@@ -71,7 +73,7 @@ public class TrainerDAO {
         if (!criteria.list().isEmpty()) {
             System.out.println(criteria.list().size());
             List<TrainingScheduleBean> trainingScheduleBeans = criteria.list();
-          
+
             for (TrainingScheduleBean trainingScheduleBean : trainingScheduleBeans) {
                 if (trainerId.equalsIgnoreCase(trainingScheduleBean.getTrainerId())) {
                     return trainingScheduleBean.getTrainingId();
@@ -81,14 +83,14 @@ public class TrainerDAO {
         session.close();
         return null;
     }
-
+//Retrieves Training Schedule by training Id.
     public TrainingScheduleBean getTrainingSchedule(String TrainingId) {
         Session session = Util.getSessionFactory().openSession();
         TrainingScheduleBean trainingScheduleBean = (TrainingScheduleBean) session.get(TrainingScheduleBean.class, TrainingId);
         session.close();
         return trainingScheduleBean;
     }
-
+//Check Whether the Task is alloted or not.
     public boolean checkTask(String trainingId, Date date) {
         Session session = Util.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(TaskBean.class);
@@ -106,7 +108,7 @@ public class TrainerDAO {
         return false;
 
     }
-
+//Check whether the Content is Added or not.
     public boolean checkContent(String trainingId, Date date) {
         Session session = Util.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(ContentBean.class);
@@ -124,7 +126,7 @@ public class TrainerDAO {
         return false;
 
     }
-
+//Returns the count of the content Added by Trainer Id using Training Id and date.
     public int contentCount(String trainingId, Date date) {
         Session session = Util.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(ContentBean.class);
@@ -143,7 +145,7 @@ public class TrainerDAO {
         return count;
 
     }
-
+//Returns the count of the question Added by Trainer Id using Training Id and date.
     public int questionCount(String trainingId, Date date) {
         Session session = Util.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(QuestionBean.class);
@@ -162,22 +164,47 @@ public class TrainerDAO {
         return count;
 
     }
-    public String checkTaskStatus(String trainingId,Date date)
-    {
-        
+//Return Task Status using TrainingId and Date.
+    public String checkTaskStatus(String trainingId, Date date) {
+
         Session session = Util.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(TaskBean.class);
         criteria.add(Restrictions.eq("trainingId", trainingId));
-        String status="";
+        String status = "";
         if (!criteria.list().isEmpty()) {
             List<TaskBean> taskBeans = criteria.list();
             for (TaskBean taskBean : taskBeans) {
 
                 if (taskBean.getTaskDate().getDate() == date.getDate() && taskBean.getTaskDate().getMonth() == date.getMonth() && taskBean.getTaskDate().getYear() == date.getYear()) {
-                  status= taskBean.getTaskStatus();
+                    status = taskBean.getTaskStatus();
                 }
             }
         }
         return status;
+    }
+//Validate the mail id whether it is given during registration or not.
+    public String checkMail(String mailid) {
+        Session session = Util.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(TrainerBean.class);
+        criteria.add(Restrictions.eq("mailId", mailid));
+        if (!criteria.list().isEmpty()) {
+            session.close();
+            return "true";
+        }
+        session.close();
+        return "false";
+    }
+//Returns Trainer Id using Mail Id 
+    public String getTrainerIdByMailID(String mailid) {
+        Session session = Util.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(TrainerBean.class);
+        criteria.add(Restrictions.eq("mailId", mailid));
+        if (!criteria.list().isEmpty()) {
+            TrainerBean trainerBean = (TrainerBean) criteria.list().get(0);
+            session.close();
+            return trainerBean.getTrainerId();
+        }
+        session.close();
+        return null;
     }
 }

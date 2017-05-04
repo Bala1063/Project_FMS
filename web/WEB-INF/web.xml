@@ -27,9 +27,12 @@
         <servlet-name>TrainerServlet</servlet-name>
         <url-pattern>/TrainerServlet</url-pattern>
     </servlet-mapping>
+     <listener>
+		<listener-class>ProjectFMS.SessionListener.ProjectFMSSessionListener</listener-class>
+	</listener>
     <session-config>
         <session-timeout>
-            120
+           15
         </session-timeout>
     </session-config>
     <welcome-file-list>

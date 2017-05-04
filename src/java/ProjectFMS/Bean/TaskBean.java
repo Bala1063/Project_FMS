@@ -9,15 +9,16 @@ import java.util.Date;
 
 /**
  *
- * @author PROJECT FMS
+ * PRP_FMS:
+ * @author Sushmitha S.
  */
 public class TaskBean {
+
     private String trainingId;
     private String taskId;
     private String task;
     private String taskStatus;
     private Date taskDate;
-    
 
     public String getTaskStatus() {
         return taskStatus;
@@ -34,7 +35,8 @@ public class TaskBean {
     public void setTaskStatus(String taskStatus) {
         this.taskStatus = taskStatus;
     }
-  public String getTaskId() {
+
+    public String getTaskId() {
         return taskId;
     }
 
@@ -58,6 +60,4 @@ public class TaskBean {
         this.task = task;
     }
 
-   
-    
 }

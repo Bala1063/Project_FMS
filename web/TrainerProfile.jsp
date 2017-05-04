@@ -19,8 +19,9 @@
         <link href="css/trainer.css" rel="stylesheet">
         <script src="jquery/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/custom.js"></script>
     </head>
-    <body>
+    <body onload="checksession()" id="hidebody">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">

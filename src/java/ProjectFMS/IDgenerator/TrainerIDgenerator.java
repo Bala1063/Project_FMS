@@ -14,7 +14,9 @@ import java.sql.Statement;
 
 /**
  *
- * @author PROJECT FMS
+ * PRP_FMS:
+ *
+ * @author Balaji S K.
  */
 public class TrainerIDgenerator {
 

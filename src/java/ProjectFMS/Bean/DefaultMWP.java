@@ -7,9 +7,11 @@ package ProjectFMS.Bean;
 
 /**
  *
- * @author bala
+ * PRP_FMS:
+ * @author Aswini A.
  */
 public class DefaultMWP {
+
     private int id;
     private int defaultMWP;
 
@@ -28,6 +30,5 @@ public class DefaultMWP {
     public void setDefaultMWP(int defaultMWP) {
         this.defaultMWP = defaultMWP;
     }
-    
-    
+
 }

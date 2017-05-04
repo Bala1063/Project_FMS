@@ -19,9 +19,10 @@
 
         <script src="jquery/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+         <script src="js/custom.js"></script>
         <script>
             function checkStatus()
-            {
+            {checksession();
                 var x = document.getElementById("status").value;
                 if (x != "")
                 {
@@ -31,7 +32,7 @@
             }
         </script>
     </head>
-    <body onload="checkStatus()">
+    <body onload="checkStatus()" id="hidebody">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">

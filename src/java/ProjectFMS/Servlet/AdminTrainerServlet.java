@@ -40,7 +40,9 @@ import org.hibernate.Session;
 
 /**
  *
- * @author bala
+ PRP_FMS:
+ *
+ * @author Aruna A,Aswini A,Balaji S K,Sushmitha S.
  */
 public class AdminTrainerServlet extends HttpServlet {
 
@@ -158,8 +160,9 @@ public class AdminTrainerServlet extends HttpServlet {
             Query query = session.createQuery("From DefaultMWP");
             int dwmp = Integer.parseInt(request.getParameter("minimumworkingperiod"));
             if (!query.list().isEmpty()) {
+                session.close();
                 DefaultMWP defaultMWP = new AdminDAO().getDefaultMWP();
-
+  defaultMWP.setDefaultMWP(dwmp);
                 if (new CommonDAO().addOrUpdateDetails(defaultMWP).equalsIgnoreCase("success")) {
                     request.setAttribute("status", "Updated");
                     request.getRequestDispatcher("AdminSetDMWP.jsp").forward(request, response);

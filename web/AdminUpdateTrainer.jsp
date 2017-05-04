@@ -16,12 +16,13 @@
         <link href="css/admin.css" rel="stylesheet">
         <script src="jquery/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/custom.js"></script>
         <title>Admin Update Trainer</title>
         <script>
-
             var req;
             function checkStatus()
             {
+                checksession();
                 var x = document.getElementById("status").value;
                 if (x != "")
                 {
@@ -65,6 +66,7 @@
                 req.open("POST", url, true);
                 req.send(null);
             }
+
             function getDetails(institution, trainername)
             {
                 req = get();
@@ -120,7 +122,7 @@
             }
         </script>
     </head>
-    <body onload="institutionlist()">
+    <body onload="institutionlist()" id="hidebody">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -149,9 +151,8 @@
                             <li><a href="AdminUpdateTrainer.jsp">Update Trainer</a></li>
                             <li><a href="AdminRemoveTrainer.jsp">Remove Trainer</a></li>
                             <li><h6 class="dropdown-header">Minimum Working Period</h6></li>
-                            <li><a href="AdminSetDMWP.jsp">Set Default Minimum Working Period</a></li>
-                            <li><a href="AdminSetMWP.jsp">Update Individual Minimum Working Period</a></li>
-
+                            <li><a href="AdminSetDMWP.jsp">Default Min Working Period</a></li>
+                            <li><a href="AdminSetMWP.jsp">Individual Min Working Period</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Training <span class="caret"></span></a>

@@ -16,12 +16,13 @@
         <link href="css/admin.css" rel="stylesheet">
         <script src="jquery/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/custom.js"></script>
         <title>Admin Set MWP</title>
         <script>
-            
             var req;
             function checkStatus()
             {
+                checksession();
                 var x = document.getElementById("status").value;
                 if (x != "")
                 {
@@ -54,7 +55,6 @@
             }
             function namelist(institution)
             {
-
                 req = get();
                 var url = "AdminTrainerServlet?operation=namelist&&institution=" + institution;
                 req.onreadystatechange = function () {
@@ -66,24 +66,23 @@
                 req.open("POST", url, true);
                 req.send(null);
             }
-             function getDetails(institution, trainername)
-            {   
+            function getDetails(institution, trainername)
+            {
                 req = get();
                 var url = "AdminTrainerServlet?operation=getDetails&&institution=" + institution + "&&trainername=" + trainername;
                 req.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
-        
+
                         var details = this.responseText.split(",");
                         if (details.length > 1)
                         {
-                            document.getElementById("minimumworkingperiod").value = details[details.length-1];
-                            
-                        }
-                        else
+                            document.getElementById("minimumworkingperiod").value = details[details.length - 1];
+
+                        } else
                         {
-                              document.getElementById("minimumworkingperiod").value = "";
-                           
-                            
+                            document.getElementById("minimumworkingperiod").value = "";
+
+
                         }
                     }
                 };
@@ -94,7 +93,7 @@
         </script>
 
     </head>
-    <body onload="institutionlist()">
+    <body onload="institutionlist()" id="hidebody">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -107,40 +106,40 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li> <button type="submit"  value="logout" name="operation"  class="btn btn-default navbar-btn "><span><i class="glyphicon glyphicon-off"></i> </span>Logout</button></li>
                     </ul>
-                    
+
                 </form> 
             </div>
         </nav>
         <nav class="navbar navbar-inverse navbar-fixed-top down">
             <div class="container-fluid">
                 <div class="navbar-header">
-                   <a class="navbar-brand" href="AdminHomePage.jsp">Home</a>
+                    <a class="navbar-brand" href="AdminHomePage.jsp">Home</a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Trainer <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                           <li><a href="AdminAddTrainer.jsp">Add Trainer</a></li>
+                            <li><a href="AdminAddTrainer.jsp">Add Trainer</a></li>
                             <li><a href="AdminUpdateTrainer.jsp">Update Trainer</a></li>
                             <li><a href="AdminRemoveTrainer.jsp">Remove Trainer</a></li>
-                             <li><h6 class="dropdown-header">Minimum Working Period</h6></li>
-                              <li><a href="AdminSetDMWP.jsp">Set Default Minimum Working Period</a></li>
-                            <li><a href="AdminSetMWP.jsp">Update Individual Minimum Working Period</a></li>
-                      
+                            <li><h6 class="dropdown-header">Minimum Working Period</h6></li>
+                            <li><a href="AdminSetDMWP.jsp">Default Min Working Period</a></li>
+                            <li><a href="AdminSetMWP.jsp">Individual Min Working Period</a></li>
+
                         </ul>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Training <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                        <li><a href="AdminAllocateTraining.jsp">Allocate Training</a></li>
-                           <li><a href="AdminUpdateTraining.jsp">Update Training</a></li>
+                            <li><a href="AdminAllocateTraining.jsp">Allocate Training</a></li>
+                            <li><a href="AdminUpdateTraining.jsp">Update Training</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Daily Task <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                              <li><a href="AdminAddTask.jsp">Add Task</a></li>
-                          
+                            <li><a href="AdminAddTask.jsp">Add Task</a></li>
+
                         </ul>
                     </li>
-                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">View <span class="caret"></span></a>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">View <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="AdminViewAllTrainers.jsp">All Trainers</a></li>
                             <li><a href="AdminViewTrainerActivities.jsp">Trainer Activities</a></li>

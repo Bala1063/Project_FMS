@@ -8,13 +8,15 @@ package ProjectFMS.Servlet;
 import ProjectFMS.DAO.LoginDAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ *PRP_FMS:
  *
- * @author bala
+ * @author Aruna A,Sushmitha S.
  */
 public class LoginServlet extends HttpServlet {
 
@@ -35,20 +37,32 @@ public class LoginServlet extends HttpServlet {
             String password = request.getParameter("password");
             String result = login(userId, password);
             if (result == null) {
-
+                request.setAttribute("status", "invalid user name or password");
+                request.getRequestDispatcher("Login.jsp").forward(request, response);
             } else if (result.equalsIgnoreCase("A")) {
                 request.getSession().setAttribute("userId", userId);
+                Cookie c = new Cookie("userId", userId);
+                response.addCookie(c);
                 response.sendRedirect("AdminHomePage.jsp");
             } else if (result.equalsIgnoreCase("T")) {
                 request.getSession().setAttribute("userId", userId);
+                Cookie c = new Cookie("userId", userId);
+                response.addCookie(c);
                 response.sendRedirect("TrainerHomePage.jsp");
 
             } else if (result.equalsIgnoreCase("P")) {
                 request.getSession().setAttribute("userId", userId);
+                Cookie c = new Cookie("userId", userId);
+                response.addCookie(c);
                 response.sendRedirect("PMOHomePage.jsp");
 
             } else if (result.equalsIgnoreCase("fail")) {
-
+                request.setAttribute("status", "Server Problem");
+                request.getRequestDispatcher("Login.jsp").forward(request, response);
+            }
+           else if (result.equalsIgnoreCase("already active")) {
+                request.setAttribute("status", "already active");
+                request.getRequestDispatcher("Login.jsp").forward(request, response);
             }
 
         }
@@ -56,9 +70,12 @@ public class LoginServlet extends HttpServlet {
         if (operation.equalsIgnoreCase("logout")) {
             String userId = (String) request.getSession(false).getAttribute("userId");
             String result = logout(userId);
+            Cookie c = new Cookie("userId", "");
+            c.setMaxAge(0);
+            response.addCookie(c);
             if (result.equalsIgnoreCase("success")) {
                 request.getSession().invalidate();
-                response.sendRedirect("Login.html");
+                response.sendRedirect("Login.jsp");
             }
 
         }

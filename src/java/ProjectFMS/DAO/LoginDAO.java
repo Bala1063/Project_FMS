@@ -16,10 +16,12 @@ import org.hibernate.criterion.Restrictions;
 
 /**
  *
- * @author bala
+ * PRP_FMS:
+ *
+ * @author Aswini A.
  */
 public class LoginDAO {
-
+// validate Login cerendentials.
     public String login(String userId, String password) {
         Session session = Util.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(LoginBean.class);
@@ -45,7 +47,7 @@ public class LoginDAO {
             }
         }
     }
-
+//Logout the user using User Id.
     public String logout(String userId) {
         Session session = Util.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(LoginBean.class);
@@ -65,7 +67,7 @@ public class LoginDAO {
         }
 
     }
-
+// Update Login Details.
     public String updateLoginDetails(LoginBean loginBean) {
 
         Session session = Util.getSessionFactory().openSession();
@@ -84,7 +86,7 @@ public class LoginDAO {
         }
         return "success";
     }
-
+//Update the password of the user.
     public String changePassword(String userId, String newPassword) {
         Session session = Util.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(LoginBean.class);

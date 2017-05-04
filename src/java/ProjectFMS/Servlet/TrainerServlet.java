@@ -8,11 +8,13 @@ package ProjectFMS.Servlet;
 import ProjectFMS.Bean.AnswerBean;
 import ProjectFMS.Bean.ContentBean;
 import ProjectFMS.Bean.LeaveBean;
+import ProjectFMS.Bean.LoginBean;
 import ProjectFMS.Bean.QuestionBean;
 import ProjectFMS.Bean.TaskBean;
 import ProjectFMS.Bean.TrainerBean;
 import ProjectFMS.Bean.TrainingScheduleBean;
 import ProjectFMS.DAO.CommonDAO;
+import ProjectFMS.DAO.SendEmailDAO;
 import ProjectFMS.DAO.TrainerDAO;
 import ProjectFMS.IDgenerator.QuestionIDgenerator;
 import ProjectFMS.Util.Util;
@@ -35,7 +37,9 @@ import org.hibernate.Session;
 
 /**
  *
- * @author bala
+ * PRP_FMS:
+ *
+ * @author Aswini A,Balaji S K,.
  */
 public class TrainerServlet extends HttpServlet {
 
@@ -173,13 +177,35 @@ public class TrainerServlet extends HttpServlet {
             response.setContentType("text/html;charset=UTF-8");
             PrintWriter out = response.getWriter();
             Random rand = new Random();
-            int n = rand.nextInt(999999 + 1 - 99999) + 99999;
+            int n = rand.nextInt(9999 + 1 - 999) + 999;
+            String msg = "Your OTP is:" + " " + n;
+            String mailId = request.getParameter("mail");
+            new SendEmailDAO().sendmail(mailId, msg);
             out.println(n + "");
             out.flush();
             out.close();
+        } else if (operation.equalsIgnoreCase("checkmail")) {
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println(new TrainerDAO().checkMail(request.getParameter("mail")));
+            out.flush();
+            out.close();
+        } else if (operation.equalsIgnoreCase("getpassword")) {
+            TrainerDAO trainerDAO = new TrainerDAO();
+            String mail = request.getParameter("mailid");
+            System.out.println(mail+".....");
+            Session session = Util.getSessionFactory().openSession();
+            LoginBean loginBean = (LoginBean) session.get(LoginBean.class, trainerDAO.getTrainerIdByMailID(mail));
+            Random rand = new Random();
+            int n = rand.nextInt(999999 + 1 - 99999) + 99999;
+            loginBean.setPassword(n + "");
+            String msg = "Your new Password:" + "  " + n;
+            if (new SendEmailDAO().sendmail(mail, msg).equalsIgnoreCase("success")) {
+                if (new CommonDAO().addOrUpdateDetails(loginBean).equalsIgnoreCase("success")) {
+                   request.setAttribute("status", "your new password is sended to your mail");
+                   request.getRequestDispatcher("ForgetPassword.jsp").forward(request, response);
+                }
+            }
         }
-        else if(operation.equalsIgnoreCase(""))
-
     }
-
 }

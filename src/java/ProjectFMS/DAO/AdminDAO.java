@@ -7,8 +7,6 @@ package ProjectFMS.DAO;
 
 import ProjectFMS.Bean.DefaultMWP;
 import ProjectFMS.Bean.LeaveBean;
-import ProjectFMS.Bean.MinimumWorkingPeriodBean;
-
 import ProjectFMS.Bean.TrainerBean;
 import ProjectFMS.Bean.TrainingScheduleBean;
 import org.hibernate.Criteria;
@@ -25,9 +23,12 @@ import org.hibernate.Transaction;
 
 /**
  *
- * @author PROJECT FMS
+ * PRP_FMS:
+ *
+ * @author Aruna A,Aswini A,Balaji S K,Sushmitha S.
  */
 public class AdminDAO {
+    //Remove a Traning. 
 
     public String removeTrainingDetails(String trainingId) {
         Session session = Util.getSessionFactory().openSession();
@@ -36,6 +37,7 @@ public class AdminDAO {
         session.close();
         return "success";
     }
+//Remove a Trainer.
 
     public String removeTrainerDetails(String trainerId) {
 
@@ -56,26 +58,29 @@ public class AdminDAO {
         }
         return "success";
     }
+//Retrieves current Scheduled Training details by TrainerId. 
 
     public TrainingScheduleBean viewTrainingScheduleByTrainerId(String trainerId) {
         Session session = Util.getSessionFactory().openSession();
         Date date = new Date();
         Criteria criteria = session.createCriteria(TrainingScheduleBean.class);
         criteria.add(Restrictions.ge("toDate", date));
+        TrainingScheduleBean trainingScheduleBean = null;
         if (!criteria.list().isEmpty()) {
             System.out.println(criteria.list().size());
             List<TrainingScheduleBean> trainingScheduleBeans = criteria.list();
             session.close();
-            for (TrainingScheduleBean trainingScheduleBean : trainingScheduleBeans) {
-                if (trainerId.equalsIgnoreCase(trainingScheduleBean.getTrainerId())) {
-                    return trainingScheduleBean;
+            for (TrainingScheduleBean trainingScheduleBean1 : trainingScheduleBeans) {
+                if (trainerId.equalsIgnoreCase(trainingScheduleBean1.getTrainerId())) {
+                    trainingScheduleBean = trainingScheduleBean1;
                 }
             }
         }
-        session.close();
-        return null;
+
+        return trainingScheduleBean;
 
     }
+//Retrieves current list of Scheduled Training.
 
     public List<TrainingScheduleBean> viewTrainingSchedule() {
         Session session = Util.getSessionFactory().openSession();
@@ -95,17 +100,7 @@ public class AdminDAO {
         return null;
 
     }
-
-    public String allocateMinimumWorkingPeriodList(List<String> trainerIdList, int minimumWorkingPeriod) {
-
-        for (int i = 0; i < trainerIdList.size(); i++) {
-            MinimumWorkingPeriodBean minimumWorkingPeriodBean = new MinimumWorkingPeriodBean();
-            minimumWorkingPeriodBean.setTrainerId(trainerIdList.get(i));
-            minimumWorkingPeriodBean.setMinimumWorkingPeriod(minimumWorkingPeriod);
-            new CommonDAO().addOrUpdateDetails(minimumWorkingPeriodBean);
-        }
-        return "success";
-    }
+//Retrieves Default Minimum Working Period.
 
     public DefaultMWP getDefaultMWP() {
         Session session = Util.getSessionFactory().openSession();
@@ -113,6 +108,7 @@ public class AdminDAO {
         session.close();
         return defaultMWP;
     }
+//Retrieves Non Scheduled Trainers
 
     public List<TrainerBean> getNonScheduleTrainers() {
         Session session = Util.getSessionFactory().openSession();
@@ -132,6 +128,7 @@ public class AdminDAO {
         session.close();
         return null;
     }
+//Retrieves All Leave Details
 
     public List<LeaveBean> getLeaveDetails() {
         Session session = Util.getSessionFactory().openSession();
@@ -146,6 +143,7 @@ public class AdminDAO {
         }
         return null;
     }
+//Retrives List of Incorrectly Scheduled Details
 
     public List<TrainingScheduleBean> getIncorrectScheduleDetails() {
         Session session = Util.getSessionFactory().openSession();

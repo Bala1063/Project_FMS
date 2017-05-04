@@ -16,7 +16,9 @@ import org.hibernate.id.IdentifierGenerator;
 
 /**
  *
- * @author PROJECT FMS
+ * PRP_FMS:
+ *
+ * @author Aruna A,Aswini A,Balaji S K,Sushmitha S.
  */
 public class ContentIDgenerator implements IdentifierGenerator {
       @Override

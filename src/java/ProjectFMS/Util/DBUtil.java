@@ -11,7 +11,9 @@ import java.sql.SQLException;
 
 /**
  *
- * @author PROJECT FMS
+ * PRP_FMS:
+ *
+ * @author Aruna A,Sushmitha S.
  */
 public class DBUtil {
     public static Connection getDBConnection() {

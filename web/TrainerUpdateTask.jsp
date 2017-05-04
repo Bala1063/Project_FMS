@@ -22,12 +22,13 @@
         <link href="css/trainer.css" rel="stylesheet">
         <script src="jquery/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+          <script src="js/custom.js"></script>
         <title>
             Trainer Update Task
         </title>
         <script>
             function checkStatus()
-            {
+            { checksession();
                 var x = document.getElementById("status").value;
                 if (x != "")
                 {
@@ -38,7 +39,7 @@
         </script>
     </head>
 
-    <body onload="checkStatus()"> 
+    <body onload="checkStatus()" id="hidebody"> 
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">

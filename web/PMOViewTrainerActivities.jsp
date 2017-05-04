@@ -13,6 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/PMO.css">
+          <script src="js/custom.js"></script>
         <style type="text/css">
             .container-fluid{
                 padding-left: 30px;
@@ -30,7 +31,7 @@
                 }
             }
             function institutionlist()
-            {
+            { checksession();
                 document.getElementById('schedule').style.display = "none";
                 document.getElementById('task').style.display = "none";
                 document.getElementById('content').style.display = "none";
@@ -110,7 +111,7 @@
             }
         </script>
     </head>
-    <body onload="institutionlist()">
+    <body onload="institutionlist()" id="hidebody">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid" id=container-fluid>
                 <div class="navbar-header">

@@ -10,10 +10,11 @@ import java.util.List;
 
 /**
  *
- * @author PROJECT FMS
+ * PRP_FMS:
+ * @author Sushmitha S.
  */
 public class QuestionBean {
-    
+
     private String trainingId;
     private String questionId;
     private String question;
@@ -59,5 +60,5 @@ public class QuestionBean {
     public void setQuestion(String question) {
         this.question = question;
     }
-    
+
 }

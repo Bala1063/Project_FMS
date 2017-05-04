@@ -16,7 +16,9 @@ import java.sql.Statement;
 
 /**
  *
- * @author PROJECT FMS
+ * PRP_FMS:
+ *
+ * @author Sushmitha S.
  */
 public class TrainingIDgenerator {
     public String generateTrainingId(TrainerBean trainerBean) {

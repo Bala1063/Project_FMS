@@ -16,10 +16,12 @@ import org.hibernate.criterion.Restrictions;
 
 /**
  *
- * @author PROJECT FMS
+ * PRP_FMS:
+ *
+ * @author Aruna A.
  */
 public class CommonDAO {
-
+// Insert and update All type of Objects
     public String addOrUpdateDetails(Object o) {
 
         Session session = Util.getSessionFactory().openSession();
@@ -38,7 +40,7 @@ public class CommonDAO {
         }
         return "success";
     }
-
+//Retrieves Minimum Working Period According to the TrainerId.
     public int getMinimumWorkingPeroid(String trainerId) {
         Session session = Util.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(MinimumWorkingPeriodBean.class);
@@ -50,7 +52,7 @@ public class CommonDAO {
         session.close();
         return -1;
     }
-
+//Retrieves Trainer Name using Trainer Id.
     public String getTrainerName(String trainerId) {
         Session session = Util.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(TrainerBean.class);

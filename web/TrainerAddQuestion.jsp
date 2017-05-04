@@ -18,6 +18,7 @@
         <link href="css/trainer.css" rel="stylesheet">
         <script src="jquery/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/custom.js"></script>
         <script>
             var count = 2;
             function addElement() {
@@ -47,7 +48,7 @@
                 document.getElementById('count').value = count;
             }
             function checkStatus()
-            {
+            {checksession();
                 var x = document.getElementById("status").value;
                 if (x != "")
                 {
@@ -57,7 +58,7 @@
             }
         </script>
     </head>
-    <body onload="checkStatus()">
+    <body onload="checkStatus()" id="hidebody">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
