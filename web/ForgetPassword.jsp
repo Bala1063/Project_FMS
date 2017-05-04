@@ -1,7 +1,7 @@
 <%-- 
     Document   : ForgetPassword
     Created on : Apr 27, 2017, 9:52:25 PM
-    Author     : bala
+    Author     : PRP_FMS:- Aruna M, Aswini A, Balaji S K, Sushmitha S.
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

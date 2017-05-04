@@ -18,7 +18,7 @@ import org.hibernate.criterion.Restrictions;
  *
  * PRP_FMS:
  *
- * @author Aruna A.
+ * @author Aruna M.
  */
 public class CommonDAO {
 // Insert and update All type of Objects

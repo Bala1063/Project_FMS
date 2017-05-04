@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSessionListener;
  *
  * PRP_FMS:
  *
- * @author Aruna A,Aswini A,Balaji S K,Sushmitha S.
+ * @author Aruna M,Aswini A,Balaji S K,Sushmitha S.
  */
 public class ProjectFMSSessionListener implements HttpSessionListener {
 

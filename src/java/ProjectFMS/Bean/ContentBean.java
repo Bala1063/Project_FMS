@@ -12,7 +12,7 @@ import java.util.Date;
 /**
  *
  * PRP_FMS:
- *  @author Aruna A.
+ *  @author Aruna M.
  */
 public class ContentBean {
 

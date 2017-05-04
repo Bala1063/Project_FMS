@@ -13,7 +13,7 @@ import java.sql.SQLException;
  *
  * PRP_FMS:
  *
- * @author Aruna A,Sushmitha S.
+ * @author Aruna M,Sushmitha S.
  */
 public class DBUtil {
     public static Connection getDBConnection() {

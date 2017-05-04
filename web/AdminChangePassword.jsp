@@ -1,7 +1,7 @@
 <%-- 
     Document   : AdminChangePassword
     Created on : Apr 27, 2017, 8:53:58 PM
-    Author     : bala
+    Author     : PRP_FMS:- Aruna M, Aswini A, Balaji S K, Sushmitha S.
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

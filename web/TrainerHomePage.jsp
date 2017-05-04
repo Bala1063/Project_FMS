@@ -1,7 +1,7 @@
 <%-- 
     Document   : TrainerHomePage
     Created on : Apr 11, 2017, 10:06:00 PM
-    Author     : bala
+    Author     : PRP_FMS:- Aruna M, Aswini A, Balaji S K, Sushmitha S.
 --%>
 
 <%@page import="ProjectFMS.DAO.AdminDAO"%>

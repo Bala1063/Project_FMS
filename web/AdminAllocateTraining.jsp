@@ -1,7 +1,7 @@
 <%-- 
     Document   : AdminAllocateTraining
     Created on : Apr 8, 2017, 1:51:39 PM
-    Author     : bala
+    Author     : PRP_FMS:- Aruna M, Aswini A, Balaji S K, Sushmitha S.
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

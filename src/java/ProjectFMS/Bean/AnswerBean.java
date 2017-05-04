@@ -8,7 +8,7 @@ package ProjectFMS.Bean;
 /**
  *
  * PRP_FMS:
- * @author Aruna A.
+ * @author Aruna M.
  */
 public class AnswerBean {
     private int id;

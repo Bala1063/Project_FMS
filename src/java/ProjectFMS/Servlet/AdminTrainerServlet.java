@@ -42,7 +42,7 @@ import org.hibernate.Session;
  *
  PRP_FMS:
  *
- * @author Aruna A,Aswini A,Balaji S K,Sushmitha S.
+ * @author Aruna M,Aswini A,Balaji S K,Sushmitha S.
  */
 public class AdminTrainerServlet extends HttpServlet {
 

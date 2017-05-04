@@ -18,7 +18,7 @@ import org.hibernate.id.IdentifierGenerator;
  *
  * PRP_FMS:
  *
- * @author Aruna A,Aswini A,Balaji S K,Sushmitha S.
+ * @author Aruna M,Aswini A,Balaji S K,Sushmitha S.
  */
 public class ContentIDgenerator implements IdentifierGenerator {
       @Override

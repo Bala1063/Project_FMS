@@ -11,7 +11,7 @@ import java.util.List;
 /**
  *
  * PRP_FMS:
- * @author Aruna A,Aswini A,Balaji S K,Sushmitha S.
+ * @author Aruna M,Aswini A,Balaji S K,Sushmitha S.
  */
 public class TrainerBean {
 

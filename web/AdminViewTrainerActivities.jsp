@@ -1,7 +1,7 @@
 <%-- 
     Document   : AdminViewTrainerActivities
     Created on : Apr 23, 2017, 11:28:12 AM
-    Author     : bala
+    Author     : PRP_FMS:- Aruna M, Aswini A, Balaji S K, Sushmitha S.
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

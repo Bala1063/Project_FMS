@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *PRP_FMS:
  *
- * @author Aruna A,Sushmitha S.
+ * @author Aruna M,Sushmitha S.
  */
 public class LoginServlet extends HttpServlet {
 

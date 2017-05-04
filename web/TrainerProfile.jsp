@@ -1,7 +1,7 @@
 <%-- 
     Document   : TrainerProfile
     Created on : 8 Apr, 2017, 1:11:32 PM
-    Author     : AswiniAnjappan
+    Author     : PRP_FMS:- Aruna M, Aswini A, Balaji S K, Sushmitha S.
 --%>
 <%@page import="ProjectFMS.Util.Util"%>
 <%@page import="org.hibernate.Session"%>
